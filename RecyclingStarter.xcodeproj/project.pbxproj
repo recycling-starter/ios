@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3CE2C3EB483879CB07BC1D6B /* Pods_RecyclingStarter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */; };
+		BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C2424CCB40900EBB2AE /* AppDelegate.swift */; };
+		BAC05C2724CCB40900EBB2AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */; };
+		BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C2D24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld */; };
+		BAC05C3124CCB40B00EBB2AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAC05C3024CCB40B00EBB2AE /* Assets.xcassets */; };
+		BAC05C3424CCB40B00EBB2AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC05C3224CCB40B00EBB2AE /* LaunchScreen.storyboard */; };
+		BAC05C4124CCB47A00EBB2AE /* Exo2-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC05C3D24CCB47A00EBB2AE /* Exo2-SemiBold.ttf */; };
+		BAC05C4224CCB47A00EBB2AE /* Exo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC05C3E24CCB47A00EBB2AE /* Exo2-Bold.ttf */; };
+		BAC05C4324CCB47A00EBB2AE /* Exo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC05C3F24CCB47A00EBB2AE /* Exo2-Regular.ttf */; };
+		BAC05C4424CCB47A00EBB2AE /* Exo2-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC05C4024CCB47A00EBB2AE /* Exo2-Medium.ttf */; };
+		BAC05C5024CCB9AE00EBB2AE /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C4F24CCB9AE00EBB2AE /* AppColor.swift */; };
+		BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C5124CCB9B800EBB2AE /* AppFont.swift */; };
+		BAC05C5424CCB9F000EBB2AE /* CoreAssemby.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C5324CCB9F000EBB2AE /* CoreAssemby.swift */; };
+		BAC05C5824CCBA1F00EBB2AE /* ViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C5724CCBA1F00EBB2AE /* ViewAssembly.swift */; };
+		BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C5A24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift */; };
+		BAC05C5D24CCBA6F00EBB2AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C5C24CCBA6F00EBB2AE /* RegisterViewController.swift */; };
+		BAC05C5F24CCBA7A00EBB2AE /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C5E24CCBA7A00EBB2AE /* ServiceAssembly.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		09DF9F4128CF454E31BC103E /* Pods-RecyclingStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.debug.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.debug.xcconfig"; sourceTree = "<group>"; };
+		7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.release.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.release.xcconfig"; sourceTree = "<group>"; };
+		BAC05C2124CCB40900EBB2AE /* RecyclingStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC05C2424CCB40900EBB2AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BAC05C2E24CCB40900EBB2AE /* RecyclingStarter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecyclingStarter.xcdatamodel; sourceTree = "<group>"; };
+		BAC05C3024CCB40B00EBB2AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAC05C3324CCB40B00EBB2AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BAC05C3524CCB40B00EBB2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC05C3D24CCB47A00EBB2AE /* Exo2-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBold.ttf"; sourceTree = "<group>"; };
+		BAC05C3E24CCB47A00EBB2AE /* Exo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Bold.ttf"; sourceTree = "<group>"; };
+		BAC05C3F24CCB47A00EBB2AE /* Exo2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Regular.ttf"; sourceTree = "<group>"; };
+		BAC05C4024CCB47A00EBB2AE /* Exo2-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Medium.ttf"; sourceTree = "<group>"; };
+		BAC05C4F24CCB9AE00EBB2AE /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppColor.swift; path = ../../../Swift/RecyclingStarter/RecyclingStarter/Appication/AppColor.swift; sourceTree = "<group>"; };
+		BAC05C5124CCB9B800EBB2AE /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		BAC05C5324CCB9F000EBB2AE /* CoreAssemby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreAssemby.swift; sourceTree = "<group>"; };
+		BAC05C5724CCBA1F00EBB2AE /* ViewAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAssembly.swift; sourceTree = "<group>"; };
+		BAC05C5A24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUnderlinedTextField.swift; sourceTree = "<group>"; };
+		BAC05C5C24CCBA6F00EBB2AE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		BAC05C5E24CCBA7A00EBB2AE /* ServiceAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
+		E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BAC05C1E24CCB40900EBB2AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE2C3EB483879CB07BC1D6B /* Pods_RecyclingStarter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DB5F7388D6E1FE06A641760 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAC05C1824CCB40900EBB2AE = {
+			isa = PBXGroup;
+			children = (
+				BAC05C2324CCB40900EBB2AE /* RecyclingStarter */,
+				BAC05C2224CCB40900EBB2AE /* Products */,
+				C3566D6349C645393A2723BC /* Pods */,
+				1DB5F7388D6E1FE06A641760 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BAC05C2224CCB40900EBB2AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C2124CCB40900EBB2AE /* RecyclingStarter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAC05C2324CCB40900EBB2AE /* RecyclingStarter */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C4824CCB54700EBB2AE /* Application */,
+				BAC05C4524CCB52D00EBB2AE /* View */,
+				BAC05C4724CCB53F00EBB2AE /* Services */,
+				BAC05C4624CCB53900EBB2AE /* Core */,
+				BAC05C3B24CCB43100EBB2AE /* Resources */,
+				BAC05C4924CCB56600EBB2AE /* Supporting */,
+			);
+			path = RecyclingStarter;
+			sourceTree = "<group>";
+		};
+		BAC05C3B24CCB43100EBB2AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C3024CCB40B00EBB2AE /* Assets.xcassets */,
+				BAC05C3C24CCB45300EBB2AE /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BAC05C3C24CCB45300EBB2AE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C3E24CCB47A00EBB2AE /* Exo2-Bold.ttf */,
+				BAC05C4024CCB47A00EBB2AE /* Exo2-Medium.ttf */,
+				BAC05C3F24CCB47A00EBB2AE /* Exo2-Regular.ttf */,
+				BAC05C3D24CCB47A00EBB2AE /* Exo2-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BAC05C4524CCB52D00EBB2AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C5924CCBA2D00EBB2AE /* Extensions */,
+				BAC05C5724CCBA1F00EBB2AE /* ViewAssembly.swift */,
+				BAC05C4E24CCB94900EBB2AE /* AuthViewController */,
+				BAC05C4D24CCB93600EBB2AE /* RegistrationViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BAC05C4624CCB53900EBB2AE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C5324CCB9F000EBB2AE /* CoreAssemby.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BAC05C4724CCB53F00EBB2AE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C5E24CCBA7A00EBB2AE /* ServiceAssembly.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BAC05C4824CCB54700EBB2AE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C2424CCB40900EBB2AE /* AppDelegate.swift */,
+				BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */,
+				BAC05C4F24CCB9AE00EBB2AE /* AppColor.swift */,
+				BAC05C5124CCB9B800EBB2AE /* AppFont.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BAC05C4924CCB56600EBB2AE /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C3224CCB40B00EBB2AE /* LaunchScreen.storyboard */,
+				BAC05C3524CCB40B00EBB2AE /* Info.plist */,
+				BAC05C2D24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		BAC05C4D24CCB93600EBB2AE /* RegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C5C24CCBA6F00EBB2AE /* RegisterViewController.swift */,
+			);
+			path = RegistrationViewController;
+			sourceTree = "<group>";
+		};
+		BAC05C4E24CCB94900EBB2AE /* AuthViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AuthViewController;
+			sourceTree = "<group>";
+		};
+		BAC05C5924CCBA2D00EBB2AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C5A24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C3566D6349C645393A2723BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				09DF9F4128CF454E31BC103E /* Pods-RecyclingStarter.debug.xcconfig */,
+				7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BAC05C2024CCB40900EBB2AE /* RecyclingStarter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAC05C3824CCB40B00EBB2AE /* Build configuration list for PBXNativeTarget "RecyclingStarter" */;
+			buildPhases = (
+				50B88001EC12E3E97D7C13FA /* [CP] Check Pods Manifest.lock */,
+				BAC05C1D24CCB40900EBB2AE /* Sources */,
+				BAC05C1E24CCB40900EBB2AE /* Frameworks */,
+				BAC05C1F24CCB40900EBB2AE /* Resources */,
+				800417B0985D306DBC9AA423 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecyclingStarter;
+			productName = RecyclingStarter;
+			productReference = BAC05C2124CCB40900EBB2AE /* RecyclingStarter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAC05C1924CCB40900EBB2AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Borisov Matvei";
+				TargetAttributes = {
+					BAC05C2024CCB40900EBB2AE = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = BAC05C1C24CCB40900EBB2AE /* Build configuration list for PBXProject "RecyclingStarter" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BAC05C1824CCB40900EBB2AE;
+			productRefGroup = BAC05C2224CCB40900EBB2AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BAC05C2024CCB40900EBB2AE /* RecyclingStarter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAC05C1F24CCB40900EBB2AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC05C3424CCB40B00EBB2AE /* LaunchScreen.storyboard in Resources */,
+				BAC05C3124CCB40B00EBB2AE /* Assets.xcassets in Resources */,
+				BAC05C4124CCB47A00EBB2AE /* Exo2-SemiBold.ttf in Resources */,
+				BAC05C4224CCB47A00EBB2AE /* Exo2-Bold.ttf in Resources */,
+				BAC05C4424CCB47A00EBB2AE /* Exo2-Medium.ttf in Resources */,
+				BAC05C4324CCB47A00EBB2AE /* Exo2-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50B88001EC12E3E97D7C13FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecyclingStarter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		800417B0985D306DBC9AA423 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BAC05C1D24CCB40900EBB2AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC05C5D24CCBA6F00EBB2AE /* RegisterViewController.swift in Sources */,
+				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
+				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
+				BAC05C5024CCB9AE00EBB2AE /* AppColor.swift in Sources */,
+				BAC05C5424CCB9F000EBB2AE /* CoreAssemby.swift in Sources */,
+				BAC05C5F24CCBA7A00EBB2AE /* ServiceAssembly.swift in Sources */,
+				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
+				BAC05C5824CCBA1F00EBB2AE /* ViewAssembly.swift in Sources */,
+				BAC05C2724CCB40900EBB2AE /* SceneDelegate.swift in Sources */,
+				BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BAC05C3224CCB40B00EBB2AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAC05C3324CCB40B00EBB2AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BAC05C3624CCB40B00EBB2AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BAC05C3724CCB40B00EBB2AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BAC05C3924CCB40B00EBB2AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09DF9F4128CF454E31BC103E /* Pods-RecyclingStarter.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9N36M22CA6;
+				INFOPLIST_FILE = RecyclingStarter/Supporting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = borisov.Matvey.RecyclingStarter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BAC05C3A24CCB40B00EBB2AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9N36M22CA6;
+				INFOPLIST_FILE = RecyclingStarter/Supporting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = borisov.Matvey.RecyclingStarter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BAC05C1C24CCB40900EBB2AE /* Build configuration list for PBXProject "RecyclingStarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC05C3624CCB40B00EBB2AE /* Debug */,
+				BAC05C3724CCB40B00EBB2AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAC05C3824CCB40B00EBB2AE /* Build configuration list for PBXNativeTarget "RecyclingStarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC05C3924CCB40B00EBB2AE /* Debug */,
+				BAC05C3A24CCB40B00EBB2AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BAC05C2D24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BAC05C2E24CCB40900EBB2AE /* RecyclingStarter.xcdatamodel */,
+			);
+			currentVersion = BAC05C2E24CCB40900EBB2AE /* RecyclingStarter.xcdatamodel */;
+			path = RecyclingStarter.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BAC05C1924CCB40900EBB2AE /* Project object */;
+}

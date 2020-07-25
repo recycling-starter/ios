@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.2.2)
+  - SwiftRichString (3.7.2)
+  - SwiftyJSON (5.0.0)
+  - TinyConstraints (4.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - SwiftRichString
+  - SwiftyJSON
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SwiftRichString
+    - SwiftyJSON
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  SwiftRichString: d61b807db1f8834c26fee92b6dd3e1be2dc5af03
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
+
+PODFILE CHECKSUM: d8b667565b404c6c039679469d600848cae0891b
+
+COCOAPODS: 1.9.2

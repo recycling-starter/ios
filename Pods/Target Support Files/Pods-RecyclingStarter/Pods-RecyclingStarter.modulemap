@@ -1,0 +1,6 @@
+framework module Pods_RecyclingStarter {
+  umbrella header "Pods-RecyclingStarter-umbrella.h"
+
+  export *
+  module * { export * }
+}
