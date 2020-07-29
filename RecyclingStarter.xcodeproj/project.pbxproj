@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3CE2C3EB483879CB07BC1D6B /* Pods_RecyclingStarter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */; };
+		BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */; };
+		BAB8F1B824D22E8400F6E5B7 /* UITextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B724D22E8400F6E5B7 /* UITextFeild.swift */; };
 		BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C2424CCB40900EBB2AE /* AppDelegate.swift */; };
 		BAC05C2724CCB40900EBB2AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */; };
 		BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C2D24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld */; };
@@ -27,11 +29,14 @@
 		BAC05C6324CCBD9200EBB2AE /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6224CCBD9200EBB2AE /* AppColor.swift */; };
 		BAC05C6724CCE3DB00EBB2AE /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6624CCE3DB00EBB2AE /* NetworkRequest.swift */; };
 		BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */; };
+		BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09DF9F4128CF454E31BC103E /* Pods-RecyclingStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.debug.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.debug.xcconfig"; sourceTree = "<group>"; };
 		7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.release.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.release.xcconfig"; sourceTree = "<group>"; };
+		BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
+		BAB8F1B724D22E8400F6E5B7 /* UITextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFeild.swift; sourceTree = "<group>"; };
 		BAC05C2124CCB40900EBB2AE /* RecyclingStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC05C2424CCB40900EBB2AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		BAC05C6224CCBD9200EBB2AE /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		BAC05C6624CCE3DB00EBB2AE /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,6 +138,7 @@
 			children = (
 				BAC05C5724CCBA1F00EBB2AE /* ViewAssembly.swift */,
 				BAC05C5924CCBA2D00EBB2AE /* Extensions */,
+				BAC05C6B24CE2C3A00EBB2AE /* EmployeeViewController */,
 				BAC05C4E24CCB94900EBB2AE /* AuthViewController */,
 				BAC05C4D24CCB93600EBB2AE /* RegistrationViewController */,
 			);
@@ -141,6 +148,7 @@
 		BAC05C4624CCB53900EBB2AE /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BAC05C6A24CE2ACD00EBB2AE /* LocationData */,
 				BAC05C6424CCE34C00EBB2AE /* Network */,
 				BAC05C5324CCB9F000EBB2AE /* CoreAssemby.swift */,
 			);
@@ -163,6 +171,7 @@
 				BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */,
 				BAC05C6224CCBD9200EBB2AE /* AppColor.swift */,
 				BAC05C5124CCB9B800EBB2AE /* AppFont.swift */,
+				BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -197,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				BAC05C5A24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift */,
+				BAB8F1B724D22E8400F6E5B7 /* UITextFeild.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +225,21 @@
 				BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */,
 			);
 			path = AuthServices;
+			sourceTree = "<group>";
+		};
+		BAC05C6A24CE2ACD00EBB2AE /* LocationData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocationData;
+			sourceTree = "<group>";
+		};
+		BAC05C6B24CE2C3A00EBB2AE /* EmployeeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */,
+			);
+			path = EmployeeViewController;
 			sourceTree = "<group>";
 		};
 		C3566D6349C645393A2723BC /* Pods */ = {
@@ -347,7 +372,9 @@
 				BAC05C6124CCBD2300EBB2AE /* AuthViewController.swift in Sources */,
 				BAC05C5D24CCBA6F00EBB2AE /* RegisterViewController.swift in Sources */,
 				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
+				BAB8F1B824D22E8400F6E5B7 /* UITextFeild.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
+				BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */,
 				BAC05C5424CCB9F000EBB2AE /* CoreAssemby.swift in Sources */,
 				BAC05C5F24CCBA7A00EBB2AE /* ServiceAssembly.swift in Sources */,
 				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
@@ -357,6 +384,7 @@
 				BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */,
 				BAC05C6724CCE3DB00EBB2AE /* NetworkRequest.swift in Sources */,
 				BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */,
+				BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

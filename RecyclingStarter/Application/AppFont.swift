@@ -16,12 +16,14 @@ enum AppFont {
     // MARK: - Semibold
     static let semibold22: UIFont = semibold(size: 22)
     static let semibold16: UIFont = semibold(size: 16)
+    static let semibold12: UIFont = semibold(size: 12)
 
     // MARK: - Medium
     static let medium16: UIFont = medium(size: 16)
 
     // MARK: - Regular
     static let regular17: UIFont = regular(size: 17)
+    static let regular12: UIFont = regular(size: 12)
 
     // MARK: - Private
     private static func bold(size: CGFloat) -> UIFont {

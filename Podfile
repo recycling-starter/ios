@@ -9,6 +9,7 @@ target 'RecyclingStarter' do
   pod 'SwiftyJSON'
   pod 'TinyConstraints'
   pod 'SwiftRichString'
+  pod 'SwiftSVG'
 
   # Pods for RecyclingStarter
 
