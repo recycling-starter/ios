@@ -14,6 +14,8 @@ enum AppFont {
     static let bold32: UIFont = bold(size: 32)
 
     // MARK: - Semibold
+    static let semibold40: UIFont = semibold(size: 40)
+    static let semibold24: UIFont = semibold(size: 24)
     static let semibold22: UIFont = semibold(size: 22)
     static let semibold16: UIFont = semibold(size: 16)
     static let semibold12: UIFont = semibold(size: 12)
@@ -28,7 +30,7 @@ enum AppFont {
     // MARK: - Private
     private static func bold(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Exo2-Bold", size: size) else {
-//            assertionFailure()
+            assertionFailure()
             return UIFont.systemFont(ofSize: size, weight: .bold)
         }
         return font
@@ -36,7 +38,7 @@ enum AppFont {
 
     private static func semibold(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Exo2-SemiBold", size: size) else {
-//            assertionFailure()
+            assertionFailure()
             return UIFont.systemFont(ofSize: size, weight: .semibold)
         }
         return font
@@ -44,7 +46,7 @@ enum AppFont {
 
     private static func medium(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Exo2-Medium", size: size) else {
-//            assertionFailure()
+            assertionFailure()
             return UIFont.systemFont(ofSize: size, weight: .medium)
         }
         return font
@@ -52,7 +54,7 @@ enum AppFont {
 
     private static func regular(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Exo2-Regular", size: size) else {
-//            assertionFailure()
+            assertionFailure()
             return UIFont.systemFont(ofSize: size, weight: .regular)
         }
         return font

@@ -10,7 +10,6 @@ import UIKit
 import TinyConstraints
 import SwiftRichString
 import Alamofire
-import SwiftSVG
 
 class AuthViewController: UIViewController {
     
@@ -22,8 +21,12 @@ class AuthViewController: UIViewController {
     private let noAccountLabel: UILabel
     private let singInButton: UIButton
     private let logoView: UIImageView
-    let authService = AuthServices()
     
+    private let authService = AuthServices()
+    private let LocalStorageService = LocalStorageServices()
+    
+    
+    // MARK: Styles
     private enum Style {
         static let placeholderStyle: SwiftRichString.Style = .init {
             $0.font = AppFont.medium16
@@ -80,6 +83,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: Setup View
     func setupViews () {
         view.backgroundColor = AppColor.authBackground
         
@@ -144,16 +148,20 @@ class AuthViewController: UIViewController {
     func setupActions() {
         enterButton.addTarget(self, action: #selector(authRequest), for: .touchUpInside)
     }
-    
+
+}
+
+// MARK: Auth Request
+extension AuthViewController {
     @objc func authRequest() {
         guard let email = emailField.text, let password = passwordField.text else {
-            print("not enouth info")
             return
         }
         authService.autharisation(email: email, password: password) { (user) in
-            if user.result == "success"{
+            if let user = user{
                 let employeeVC = EmployeeViewController(user: user)
                 UIApplication.shared.keyWindow?.rootViewController = employeeVC
+                self.LocalStorageService.saveUserInfo(email: email, password: password)
             } else {
                 self.setFieldsColor(isError: true)
                 self.emailField.shake()
@@ -161,9 +169,10 @@ class AuthViewController: UIViewController {
             }
         }
     }
-    
 }
 
+
+// MARK: Setup UI elements
 extension AuthViewController {
     private static func makeTextField(placeholder: String) -> UIUnderlinedTextField{
         let textField = UIUnderlinedTextField()

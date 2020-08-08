@@ -9,10 +9,10 @@
 import Foundation
 
 class AuthServices {
+    
     let networkService = NetworkRequest()
     
-    
-    func autharisation(email: String, password: String, callback: @escaping(UserLogin) -> Void) {
+    func autharisation(email: String, password: String, callback: @escaping(User?) -> Void) {
         let params: [String: Any] = [
             "email" : email.trimmingCharacters(in: .whitespacesAndNewlines),
             "password" : password.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -27,20 +27,12 @@ class AuthServices {
             if let data = stringData?.data(using: .utf8){
                 let decoder = JSONDecoder()
                 do {
-                    let user = try decoder.decode(UserLogin.self, from: data)
+                    let user = try decoder.decode(User.self, from: data)
                     callback(user)
                     return
                 } catch { }
             }
-            let user = UserLogin(result: "error")
-            callback(user)
+            callback(nil)
         }
     }
-}
-
-
-struct UserLogin: Codable {
-    var result: String
-    var token: String?
-    var type: String?
 }

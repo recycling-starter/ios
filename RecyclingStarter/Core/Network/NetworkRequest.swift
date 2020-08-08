@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 class NetworkRequest {
     func POSTrequest(url: String, params: [String: Any], callback: @escaping(String?) -> Void) {

@@ -6,10 +6,8 @@ target 'RecyclingStarter' do
   use_frameworks!
   
   pod 'Alamofire'
-  pod 'SwiftyJSON'
   pod 'TinyConstraints'
   pod 'SwiftRichString'
-  pod 'SwiftSVG'
 
   # Pods for RecyclingStarter
 
