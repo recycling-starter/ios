@@ -36,4 +36,10 @@ class Router {
         }
         return loadVC
     }
+    
+    func presentAuthVC() {
+        let vc = AuthViewController()
+        
+        UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
+    }
 }

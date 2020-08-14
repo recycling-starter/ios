@@ -86,7 +86,7 @@ extension UIWindow {
         }
         
         /// Duration of the animation (default is 0.20s)
-        public var duration: TimeInterval = 0.3
+        public var duration: TimeInterval = 0.2
         
         /// Direction of the transition (default is `toRight`)
         public var direction: TransitionOptions.Direction = .toRight

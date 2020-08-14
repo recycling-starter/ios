@@ -36,7 +36,13 @@ enum AppColor {
     
     //MARK: TextView
     
-    // MARK: - Page indicators
+    // MARK: Page indicators
+    
+    // MARK: Progress bar
+    
+    static let progressBarProgress = UIColor(named: "progress_bar_progress")
+    
+    static let progressBarTrack = UIColor(named: "progress_bar_track")
     
     //MARK: Box gradien background
     static let boxState0Up = UIColor(named: "box_gradient_background_0_up")

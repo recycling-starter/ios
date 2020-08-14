@@ -1,5 +1,5 @@
 //
-//  NetworkRequest.swift
+//  NetworkService.swift
 //  RecyclingStarter
 //
 //  Created by  Matvey on 26.07.2020.
@@ -9,14 +9,12 @@
 import Foundation
 import Alamofire
 
-class NetworkRequest {
-    func POSTrequest(url: String, params: [String: Any], callback: @escaping(String?) -> Void) {
+class NetworkService {
+    func POSTrequest(url: String, params: [String: Any], headers: [String: String], callback: @escaping(String?) -> Void) {
         
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json"
-        ]
+        let httpHeaders: HTTPHeaders = HTTPHeaders(headers)
         
-        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString(completionHandler: { (respose) in
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: httpHeaders).responseString(completionHandler: { (respose) in
             switch respose.result {
             case .success(let  value):
                 callback(value)

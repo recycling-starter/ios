@@ -12,15 +12,22 @@ import SwiftRichString
 
 class EmployeeViewController: UIViewController {
     
+    let employeeService = EmployeeServices()
+    let localStorageService = LocalStorageServices()
+    let router = Router()
+    
     let user: User
+    var box = Box(filling: 0, id: 0, result: "not loaded")
     private var boxFilling = boxStates.state0
     
-    private let infoView = UIView()
+    private let infoView: UIView
     private let minusButton: UIButton
     private let plusButton: UIButton
     private let boxLabel: UILabel
     private let statusLabel: UILabel
-//    private let persentLabel: UILabel
+    private let percentLabel: UILabel
+    private let progressView: UIProgressView
+    private let logoutButton: UIButton
     
     private var gradientLayer0 = CAGradientLayer()
     private var gradientLayer25 = CAGradientLayer()
@@ -47,26 +54,37 @@ class EmployeeViewController: UIViewController {
         case state50 = 50
         case state75 = 75
         case state100 = 100
+        
+        static let state0Text = "Пусто"
+        static let state25Text = "Немного есть"
+        static let state50Text = "Заполнен на половину"
+        static let state75Text = "Почти полон"
+        static let state100Text = "Заполнен"
     }
     
     private enum Style {
-        static let button: SwiftRichString.Style = .init {
-            $0.font = AppFont.semibold40
-            $0.color = AppColor.label
-        }
         
         static let boxLabel: SwiftRichString.Style = .init {
             $0.font = AppFont.semibold24
+            $0.color = AppColor.label
+        }
+        
+        static let percentLabel: SwiftRichString.Style = .init {
+            $0.font = AppFont.semibold22
             $0.color = AppColor.label
         }
     }
     
     init(user: User) {
         self.user = user
+        self.infoView = Self.makeInfoView()
         self.plusButton = Self.makeButton(isPlus: true)
         self.minusButton = Self.makeButton(isPlus: false)
         self.boxLabel = Self.makeBoxLabel()
         self.statusLabel = Self.makeStatusLabel()
+        self.percentLabel = Self.makePercentLabel()
+        self.progressView = Self.makeProgressView()
+        self.logoutButton = Self.makeLogoutButton()
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -79,6 +97,7 @@ class EmployeeViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupButtonActions()
+        getBox()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,33 +113,41 @@ class EmployeeViewController: UIViewController {
     // MARK: Setup View
     func setupViews() {
         
-        let buttonsStackView = UIStackView()
-        buttonsStackView.axis = .horizontal
-        buttonsStackView.distribution = .equalSpacing
-        
-        buttonsStackView.addArrangedSubview(minusButton)
-//        buttonsStackView.addArrangedSubview(persentLabel)
-        buttonsStackView.addArrangedSubview(plusButton)
-        
-        let infoStackView = UIStackView()
-        infoStackView.axis = .vertical
-        infoStackView.distribution = .equalSpacing
-        
-        infoStackView.addArrangedSubview(boxLabel)
-        infoStackView.addArrangedSubview(statusLabel)
-        infoStackView.addArrangedSubview(buttonsStackView)
+        view.addSubview(logoutButton)
+        logoutButton.topToSuperview(offset: 24, usingSafeArea: true)
+        logoutButton.trailingToSuperview(offset: 23, usingSafeArea: true)
         
         view.addSubview(infoView)
-        infoView.backgroundColor = .white
-        infoView.leadingToSuperview(offset: 20)
-        infoView.trailingToSuperview(offset: 20)
-        infoView.bottomToSuperview(offset: -20)
-        infoView.height(200)
+        infoView.leadingToSuperview(offset: 20, usingSafeArea: true)
+        infoView.trailingToSuperview(offset: 20, usingSafeArea: true)
+        infoView.bottomToSuperview(offset: -20, usingSafeArea: true)
         
-        infoView.addSubview(infoStackView)
-        infoStackView.edgesToSuperview(insets: .top(10) + .left(10) + .bottom(10) + .right(10))
+        infoView.addSubview(boxLabel)
+        boxLabel.topToSuperview(offset: 14)
+        boxLabel.centerXToSuperview()
         
-        }
+        infoView.addSubview(statusLabel)
+        statusLabel.topToBottom(of: boxLabel, offset: 20)
+        statusLabel.centerXToSuperview()
+        
+        let buttonStackView = UIStackView()
+        buttonStackView.axis = .horizontal
+        buttonStackView.distribution = .equalSpacing
+        
+        buttonStackView.addArrangedSubview(minusButton)
+        buttonStackView.addArrangedSubview(percentLabel)
+        buttonStackView.addArrangedSubview(plusButton)
+        
+        infoView.addSubview(buttonStackView)
+        buttonStackView.topToBottom(of: statusLabel, offset: 21)
+        buttonStackView.leadingToSuperview(offset: 42)
+        buttonStackView.trailingToSuperview(offset: 42)
+        
+        infoView.addSubview(progressView)
+        progressView.topToBottom(of: buttonStackView, offset: 41)
+        progressView.leadingToSuperview(offset: 41)
+        progressView.trailingToSuperview(offset: 41)
+    }
     
     private func makeGradient(state: boxStates) -> CAGradientLayer {
         let gradient = CAGradientLayer()
@@ -144,9 +171,19 @@ class EmployeeViewController: UIViewController {
         return gradient
     }
     
+    private static func makeInfoView() -> UIView {
+        let view = UIView()
+        
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .white
+        view.height(225)
+        
+        return view
+    }
+    
     private static func makeBoxLabel() -> UILabel {
         let label = UILabel()
-        label.attributedText = "Контейнер #1337".set(style: Style.boxLabel)
+        label.attributedText = "Контейнер ####".set(style: Style.boxLabel)
         label.numberOfLines = 1
         label.textAlignment = .center
         return label
@@ -154,20 +191,52 @@ class EmployeeViewController: UIViewController {
     
     private static func makeStatusLabel() -> UILabel {
         let label = UILabel()
-        label.text = "ba + + NaN"
+        label.text = boxStates.state0Text
         label.font = AppFont.medium16
+        return label
+    }
+    
+    private static func makePercentLabel() -> UILabel {
+        let label = UILabel()
+        label.attributedText = "0%".set(style: Style.percentLabel)
         return label
     }
     
     private static func makeButton(isPlus: Bool) -> UIButton {
         let button = UIButton(type: .system)
-        var title: NSAttributedString
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = .black
+        button.height(48)
+        button.width(22)
         if isPlus {
-            title = "+".set(style: Style.button)
+            button.setImage(AppImage.plusImage, for: .normal)
         } else {
-            title = "-".set(style: Style.button)
+            button.setImage(AppImage.minusImage, for: .normal)
         }
-        button.setAttributedTitle(title, for: .normal)
+        return button
+    }
+    
+    private static func makeProgressView() -> UIProgressView {
+        let progressView = UIProgressView()
+        
+        progressView.progressTintColor = AppColor.progressBarProgress
+        progressView.trackTintColor = AppColor.progressBarTrack
+        
+        progressView.transform = progressView.transform.scaledBy(x: 1, y: 3.5)
+        progressView.layer.cornerRadius = 3.5
+        progressView.clipsToBounds = true
+        
+        progressView.setProgress(0.01, animated: true)
+        
+        return progressView
+    }
+    
+    private static func makeLogoutButton() -> UIButton {
+        let button = UIButton()
+        
+        button.width(28)
+        button.height(28)
+        button.setImage(AppImage.logoutImage, for: .normal)
         
         return button
     }
@@ -177,6 +246,7 @@ class EmployeeViewController: UIViewController {
     func setupButtonActions() {
         minusButton.addTarget(self, action: #selector(decreaseBoxFilling), for: .touchUpInside)
         plusButton.addTarget(self, action: #selector(increaseBoxFilling), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
     
     @objc func increaseBoxFilling() {
@@ -185,30 +255,37 @@ class EmployeeViewController: UIViewController {
         case .state0:
             boxFilling = .state25
             animation = {
+                self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer25.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState25Up
             }
         case .state25:
             boxFilling = .state50
             animation = {
+                self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer50.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState50Up
             }
         case .state50:
             boxFilling = .state75
             animation = {
+                self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer75.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState75Up
             }
         case .state75:
             boxFilling = .state100
             animation = {
+                self.statusLabel.text = boxStates.state100Text
                 self.gradientLayer100.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState100Up
             }
         default:
             break
         }
+        fillBox(filling: boxFilling.rawValue)
+        percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
+        progressView.setProgress(Float(boxFilling.rawValue) / 100, animated: true)
         UIView.animate(withDuration: 0.5) {
             animation()
         }
@@ -220,32 +297,89 @@ class EmployeeViewController: UIViewController {
         case .state100:
             boxFilling = .state75
             animation = {
+                self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer100.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState75Up
             }
         case .state75:
             boxFilling = .state50
             animation = {
+                self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer75.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
             }
         case .state50:
             boxFilling = .state25
             animation = {
+                self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer50.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
             }
         case .state25:
             boxFilling = .state0
             animation = {
+                self.statusLabel.text = boxStates.state0Text
                 self.gradientLayer25.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState0Up
             }
         default:
             break
         }
+        fillBox(filling: boxFilling.rawValue)
+        progressView.setProgress(max(Float(boxFilling.rawValue) / 100, 0.01), animated: true)
+        percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
         UIView.animate(withDuration: 0.5) {
             animation()
+        }
+    }
+    
+    private func updateBox(state: boxStates) {
+        
+        boxLabel.attributedText = "Контейнер \(box.id)".set(style: Style.boxLabel)
+        
+        if state.rawValue > 0 {
+            increaseBoxFilling()
+            if state.rawValue > 25 {
+                increaseBoxFilling()
+                if state.rawValue > 50 {
+                    increaseBoxFilling()
+                    if state.rawValue > 75 {
+                        increaseBoxFilling()
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc private func logout() {
+        localStorageService.logoutUser {
+            DispatchQueue.main.async {
+                self.dismiss(animated: false) {
+                    self.router.presentAuthVC()
+                }
+            }
+            
+        }
+    }
+    
+    // MARK: Network
+    
+    private func getBox() {
+        employeeService.getBox(user: user) { (newbox) in
+            if let newbox = newbox{
+                self.box = newbox
+                if let state = boxStates(rawValue: newbox.filling) {
+                    self.updateBox(state: state)
+                }
+            }
+        }
+    }
+    
+    private func fillBox(filling: Int) {
+        employeeService.fillBox(user: user, box: box, filling: filling) { (newBox) in
+            if let newBox = newBox{
+                self.box = newBox
+            }
         }
     }
 }

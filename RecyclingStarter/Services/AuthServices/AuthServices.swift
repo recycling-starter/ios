@@ -10,20 +10,22 @@ import Foundation
 
 class AuthServices {
     
-    let networkService = NetworkRequest()
+    let networkService = NetworkService()
     
     func autharisation(email: String, password: String, callback: @escaping(User?) -> Void) {
+        
         let params: [String: Any] = [
             "email" : email.trimmingCharacters(in: .whitespacesAndNewlines),
             "password" : password.trimmingCharacters(in: .whitespacesAndNewlines)
-//            "email" : "timofei228@gmail.com",
-//            "password" : "greenlife20"
         ]
+        
         let mainUrl = "https://oreldaniil.pythonanywhere.com"
         let authPath = "/users/login"
         let url = mainUrl + authPath
         
-        networkService.POSTrequest(url: url, params: params) { (stringData) in
+        let headers: [String: String] = ["Content-Type": "application/json"]
+        
+        networkService.POSTrequest(url: url, params: params, headers: headers) { (stringData) in
             if let data = stringData?.data(using: .utf8){
                 let decoder = JSONDecoder()
                 do {

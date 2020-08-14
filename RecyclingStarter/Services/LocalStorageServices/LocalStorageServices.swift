@@ -25,12 +25,21 @@ class LocalStorageServices {
         var userInfo: UserInfo? = nil
         coreDataService.loadData { (result, loadInfo) in
             if result == .success {
-                print("succes load user info \(loadInfo?.email) \(loadInfo?.password)")
                 userInfo = loadInfo
             }
             callback(userInfo)
-            
         }
-        
+    }
+    
+    func logoutUser(callback: @escaping()->Void) {
+        coreDataService.clearUserData { (resault) in
+            switch resault{
+            case .success:
+                print("success delete user data")
+            case .error:
+                print("error delete user data")
+            }
+            callback()
+        }
     }
 }

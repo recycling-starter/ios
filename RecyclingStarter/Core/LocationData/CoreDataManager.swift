@@ -87,4 +87,18 @@ class CoreDataManager {
             }
         }
     }
+    
+    func clearUserData(callback: @escaping(localStorageResault)->Void) {
+        persistentContainer.performBackgroundTask { (context) in
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInfo")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do{
+                try context.execute(deleteRequest)
+                try context.save()
+                callback(localStorageResault.success)
+            } catch {
+                callback(localStorageResault.error)
+            }
+        }
+    }
 }
