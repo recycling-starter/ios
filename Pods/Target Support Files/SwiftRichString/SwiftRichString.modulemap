@@ -1,4 +1,4 @@
-framework module SwiftRichString {
+module SwiftRichString {
   umbrella header "SwiftRichString-umbrella.h"
 
   export *

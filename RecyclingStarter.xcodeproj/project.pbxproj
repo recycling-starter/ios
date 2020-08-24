@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CE2C3EB483879CB07BC1D6B /* Pods_RecyclingStarter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */; };
+		3C16FAE7A97216CA081D80CB /* libPods-RecyclingStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD78D78AD35C9A839181205 /* libPods-RecyclingStarter.a */; };
 		BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89C24DEEC9800F27395 /* Debounce.swift */; };
 		BA0AF89F24DF6A0900F27395 /* EmployeeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */; };
 		BA0AF8A124DF6ACE00F27395 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF8A024DF6ACE00F27395 /* Box.swift */; };
@@ -50,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		09DF9F4128CF454E31BC103E /* Pods-RecyclingStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.debug.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.debug.xcconfig"; sourceTree = "<group>"; };
+		4BD78D78AD35C9A839181205 /* libPods-RecyclingStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecyclingStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.release.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.release.xcconfig"; sourceTree = "<group>"; };
 		BA0AF89C24DEEC9800F27395 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeServices.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		BADB019024E6C646004AC43E /* BoxInteractionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionServices.swift; sourceTree = "<group>"; };
 		BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionProtocol.swift; sourceTree = "<group>"; };
 		BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
-		E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CE2C3EB483879CB07BC1D6B /* Pods_RecyclingStarter.framework in Frameworks */,
+				3C16FAE7A97216CA081D80CB /* libPods-RecyclingStarter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 		1DB5F7388D6E1FE06A641760 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */,
+				4BD78D78AD35C9A839181205 /* libPods-RecyclingStarter.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -342,7 +342,6 @@
 				BAC05C1D24CCB40900EBB2AE /* Sources */,
 				BAC05C1E24CCB40900EBB2AE /* Frameworks */,
 				BAC05C1F24CCB40900EBB2AE /* Resources */,
-				800417B0985D306DBC9AA423 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -423,23 +422,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		800417B0985D306DBC9AA423 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -142,19 +142,25 @@ class EmployeeViewController: UIViewController {
         infoView.addSubview(statusLabel)
         statusLabel.topToBottom(of: boxLabel, offset: 20)
         statusLabel.centerXToSuperview()
+        statusLabel.leadingToSuperview(offset: 42)
+        statusLabel.trailingToSuperview(offset: 42)
         
         let buttonStackView = UIStackView()
         buttonStackView.axis = .horizontal
-        buttonStackView.distribution = .equalSpacing
+        buttonStackView.distribution = .fill
         
         buttonStackView.addArrangedSubview(minusButton)
         buttonStackView.addArrangedSubview(percentLabel)
         buttonStackView.addArrangedSubview(plusButton)
         
+        
         infoView.addSubview(buttonStackView)
         buttonStackView.topToBottom(of: statusLabel, offset: 21)
         buttonStackView.leadingToSuperview(offset: 42)
         buttonStackView.trailingToSuperview(offset: 42)
+        
+        percentLabel.leadingToTrailing(of: minusButton, offset: 10)
+        percentLabel.trailingToLeading(of: plusButton, offset: 10)
         
         infoView.addSubview(progressView)
         progressView.topToBottom(of: buttonStackView, offset: 41)
@@ -163,17 +169,17 @@ class EmployeeViewController: UIViewController {
         
         view.addSubview(boxLowImageView)
         boxLowImageView.centerXToSuperview(offset: 4)
-        boxLowImageView.topToBottom(of: logoutButton, offset: 45)
+        boxLowImageView.topToBottom(of: logoutButton, offset: 35)
         boxLowImageView.bottomToTop(of: infoView, offset: -35)
         
         view.addSubview(boxMiddleImageView)
         boxMiddleImageView.centerXToSuperview(offset: 4)
-        fillingTopConstraint = boxMiddleImageView.topToBottom(of: logoutButton, offset: 65)
+        fillingTopConstraint = boxMiddleImageView.topToBottom(of: logoutButton, offset: 85)
         boxMiddleImageView.bottomToTop(of: infoView, offset: -35)
         
         view.addSubview(boxTopImageView)
         boxTopImageView.centerXToSuperview(offset: 4)
-        boxTopImageView.topToBottom(of: logoutButton, offset: 45)
+        boxTopImageView.topToBottom(of: logoutButton, offset: 35)
         boxTopImageView.bottomToTop(of: infoView, offset: -35)
     }
     
@@ -221,21 +227,24 @@ class EmployeeViewController: UIViewController {
         let label = UILabel()
         label.text = boxStates.state0Text
         label.font = AppFont.medium16
+        label.textAlignment = .center
         return label
     }
     
     private static func makePercentLabel() -> UILabel {
         let label = UILabel()
         label.attributedText = "0%".set(style: Style.percentLabel)
+        label.textAlignment = .center
         return label
     }
     
     private static func makeButton(isPlus: Bool) -> UIButton {
         let button = UIButton(type: .system)
         button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.width(22)
         button.tintColor = .black
         button.height(48)
-        button.width(22)
+        button.width(60)
         if isPlus {
             button.setImage(AppImage.plusImage, for: .normal)
         } else {
@@ -262,9 +271,10 @@ class EmployeeViewController: UIViewController {
     private static func makeLogoutButton() -> UIButton {
         let button = UIButton()
         
-        button.width(28)
-        button.height(28)
+        button.width(50)
+        button.height(50)
         button.setImage(AppImage.logoutImage, for: .normal)
+        button.imageView?.width(28)
         
         return button
     }
@@ -301,7 +311,7 @@ class EmployeeViewController: UIViewController {
         case .state0:
             boxFilling = .state25
             animation = {
-                self.fillingTopConstraint?.constant = 60
+                self.fillingTopConstraint?.constant = 50
                 self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer25.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState25Up
@@ -309,7 +319,7 @@ class EmployeeViewController: UIViewController {
         case .state25:
             boxFilling = .state50
             animation = {
-                self.fillingTopConstraint?.constant = 55
+                self.fillingTopConstraint?.constant = 45
                 self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer50.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -317,7 +327,7 @@ class EmployeeViewController: UIViewController {
         case .state50:
             boxFilling = .state75
             animation = {
-                self.fillingTopConstraint?.constant = 50
+                self.fillingTopConstraint?.constant = 40
                 self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer75.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState75Up
@@ -325,7 +335,7 @@ class EmployeeViewController: UIViewController {
         case .state75:
             boxFilling = .state100
             animation = {
-                self.fillingTopConstraint?.constant = 45
+                self.fillingTopConstraint?.constant = 35
                 self.statusLabel.text = boxStates.state100Text
                 self.gradientLayer100.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState100Up
@@ -348,7 +358,7 @@ class EmployeeViewController: UIViewController {
         case .state100:
             boxFilling = .state75
             animation = {
-                self.fillingTopConstraint?.constant = 50
+                self.fillingTopConstraint?.constant = 40
                 self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer100.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState75Up
@@ -356,7 +366,7 @@ class EmployeeViewController: UIViewController {
         case .state75:
             boxFilling = .state50
             animation = {
-                self.fillingTopConstraint?.constant = 55
+                self.fillingTopConstraint?.constant = 45
                 self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer75.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -364,7 +374,7 @@ class EmployeeViewController: UIViewController {
         case .state50:
             boxFilling = .state25
             animation = {
-                self.fillingTopConstraint?.constant = 60
+                self.fillingTopConstraint?.constant = 50
                 self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer50.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -372,7 +382,7 @@ class EmployeeViewController: UIViewController {
         case .state25:
             boxFilling = .state0
             animation = {
-                self.fillingTopConstraint?.constant = 65
+                self.fillingTopConstraint?.constant = 85
                 self.statusLabel.text = boxStates.state0Text
                 self.gradientLayer25.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState0Up
