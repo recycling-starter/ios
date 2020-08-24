@@ -17,4 +17,12 @@ enum AppImage {
     static let minusImage = UIImage(named: "minus")
     
     static let logoutImage = UIImage(named: "logout")
+    
+    //Separated box image
+    
+    static let boxLow = UIImage(named: "box_low")
+    
+    static let boxMiddle = UIImage(named: "box_middle")
+    
+    static let boxTop = UIImage(named: "box_top")
 }

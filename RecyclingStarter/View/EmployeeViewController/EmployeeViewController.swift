@@ -12,13 +12,14 @@ import SwiftRichString
 
 class EmployeeViewController: UIViewController {
     
-    let employeeService = EmployeeServices()
-    let localStorageService = LocalStorageServices()
-    let router = Router()
+    private let employeeService = EmployeeServices()
+    private let localStorageService = LocalStorageServices()
+    private let router = Router()
     
     let user: User
     var box = Box(filling: 0, id: 0, result: "not loaded")
     private var boxFilling = boxStates.state0
+    private var fillingTopConstraint: Constraint?
     
     private let infoView: UIView
     private let minusButton: UIButton
@@ -28,6 +29,9 @@ class EmployeeViewController: UIViewController {
     private let percentLabel: UILabel
     private let progressView: UIProgressView
     private let logoutButton: UIButton
+    private let boxLowImageView: UIImageView
+    private let boxMiddleImageView: UIImageView
+    private let boxTopImageView: UIImageView
     
     private var gradientLayer0 = CAGradientLayer()
     private var gradientLayer25 = CAGradientLayer()
@@ -75,6 +79,12 @@ class EmployeeViewController: UIViewController {
         }
     }
     
+    private enum BoxImage {
+        case low
+        case middle
+        case top
+    }
+    
     init(user: User) {
         self.user = user
         self.infoView = Self.makeInfoView()
@@ -85,6 +95,9 @@ class EmployeeViewController: UIViewController {
         self.percentLabel = Self.makePercentLabel()
         self.progressView = Self.makeProgressView()
         self.logoutButton = Self.makeLogoutButton()
+        self.boxLowImageView = Self.makeBoxImageView(part: .low)
+        self.boxMiddleImageView = Self.makeBoxImageView(part: .middle)
+        self.boxTopImageView = Self.makeBoxImageView(part: .top)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -147,6 +160,21 @@ class EmployeeViewController: UIViewController {
         progressView.topToBottom(of: buttonStackView, offset: 41)
         progressView.leadingToSuperview(offset: 41)
         progressView.trailingToSuperview(offset: 41)
+        
+        view.addSubview(boxLowImageView)
+        boxLowImageView.centerXToSuperview(offset: 4)
+        boxLowImageView.topToBottom(of: logoutButton, offset: 45)
+        boxLowImageView.bottomToTop(of: infoView, offset: -35)
+        
+        view.addSubview(boxMiddleImageView)
+        boxMiddleImageView.centerXToSuperview(offset: 4)
+        fillingTopConstraint = boxMiddleImageView.topToBottom(of: logoutButton, offset: 65)
+        boxMiddleImageView.bottomToTop(of: infoView, offset: -35)
+        
+        view.addSubview(boxTopImageView)
+        boxTopImageView.centerXToSuperview(offset: 4)
+        boxTopImageView.topToBottom(of: logoutButton, offset: 45)
+        boxTopImageView.bottomToTop(of: infoView, offset: -35)
     }
     
     private func makeGradient(state: boxStates) -> CAGradientLayer {
@@ -241,6 +269,24 @@ class EmployeeViewController: UIViewController {
         return button
     }
     
+    private static func makeBoxImageView(part: BoxImage) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+//        imageView.height(271)
+//        imageView.width(271)
+        
+        switch part {
+        case .low:
+            imageView.image = AppImage.boxLow
+        case .middle:
+            imageView.image = AppImage.boxMiddle
+        case .top:
+            imageView.image = AppImage.boxTop
+        }
+        
+        return imageView
+    }
+    
     
     // MARK: Setup Actions
     func setupButtonActions() {
@@ -255,6 +301,7 @@ class EmployeeViewController: UIViewController {
         case .state0:
             boxFilling = .state25
             animation = {
+                self.fillingTopConstraint?.constant = 60
                 self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer25.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState25Up
@@ -262,6 +309,7 @@ class EmployeeViewController: UIViewController {
         case .state25:
             boxFilling = .state50
             animation = {
+                self.fillingTopConstraint?.constant = 55
                 self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer50.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -269,6 +317,7 @@ class EmployeeViewController: UIViewController {
         case .state50:
             boxFilling = .state75
             animation = {
+                self.fillingTopConstraint?.constant = 50
                 self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer75.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState75Up
@@ -276,6 +325,7 @@ class EmployeeViewController: UIViewController {
         case .state75:
             boxFilling = .state100
             animation = {
+                self.fillingTopConstraint?.constant = 45
                 self.statusLabel.text = boxStates.state100Text
                 self.gradientLayer100.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState100Up
@@ -288,6 +338,7 @@ class EmployeeViewController: UIViewController {
         progressView.setProgress(Float(boxFilling.rawValue) / 100, animated: true)
         UIView.animate(withDuration: 0.5) {
             animation()
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -297,6 +348,7 @@ class EmployeeViewController: UIViewController {
         case .state100:
             boxFilling = .state75
             animation = {
+                self.fillingTopConstraint?.constant = 50
                 self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer100.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState75Up
@@ -304,6 +356,7 @@ class EmployeeViewController: UIViewController {
         case .state75:
             boxFilling = .state50
             animation = {
+                self.fillingTopConstraint?.constant = 55
                 self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer75.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -311,6 +364,7 @@ class EmployeeViewController: UIViewController {
         case .state50:
             boxFilling = .state25
             animation = {
+                self.fillingTopConstraint?.constant = 60
                 self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer50.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -318,6 +372,7 @@ class EmployeeViewController: UIViewController {
         case .state25:
             boxFilling = .state0
             animation = {
+                self.fillingTopConstraint?.constant = 65
                 self.statusLabel.text = boxStates.state0Text
                 self.gradientLayer25.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState0Up
@@ -330,6 +385,7 @@ class EmployeeViewController: UIViewController {
         percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
         UIView.animate(withDuration: 0.5) {
             animation()
+            self.view.layoutIfNeeded()
         }
     }
     

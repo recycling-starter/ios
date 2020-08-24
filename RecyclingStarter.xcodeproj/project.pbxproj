@@ -41,6 +41,10 @@
 		BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */; };
 		BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */; };
 		BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018824E36D54004AC43E /* UILabelExtension.swift */; };
+		BADB018D24E6C5EB004AC43E /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018C24E6C5EB004AC43E /* AccountService.swift */; };
+		BADB018F24E6C614004AC43E /* AccoutnProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018E24E6C614004AC43E /* AccoutnProtocol.swift */; };
+		BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019024E6C646004AC43E /* BoxInteractionServices.swift */; };
+		BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */; };
 		BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +86,10 @@
 		BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		BADB018824E36D54004AC43E /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		BADB018C24E6C5EB004AC43E /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		BADB018E24E6C614004AC43E /* AccoutnProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccoutnProtocol.swift; sourceTree = "<group>"; };
+		BADB019024E6C646004AC43E /* BoxInteractionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionServices.swift; sourceTree = "<group>"; };
+		BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionProtocol.swift; sourceTree = "<group>"; };
 		BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
 		E39F0FAD7D05A15181E021CC /* Pods_RecyclingStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -199,6 +207,8 @@
 		BAC05C4724CCB53F00EBB2AE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BADB018B24E6C5CB004AC43E /* BoxInteractionServices */,
+				BADB018A24E6C590004AC43E /* AccoutnServices */,
 				BA0AF89B24DEEC1200F27395 /* EmployeeServices */,
 				BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */,
 				BAC05C6524CCE35B00EBB2AE /* AuthServices */,
@@ -292,6 +302,24 @@
 				BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */,
 			);
 			path = EmployeeViewController;
+			sourceTree = "<group>";
+		};
+		BADB018A24E6C590004AC43E /* AccoutnServices */ = {
+			isa = PBXGroup;
+			children = (
+				BADB018C24E6C5EB004AC43E /* AccountService.swift */,
+				BADB018E24E6C614004AC43E /* AccoutnProtocol.swift */,
+			);
+			path = AccoutnServices;
+			sourceTree = "<group>";
+		};
+		BADB018B24E6C5CB004AC43E /* BoxInteractionServices */ = {
+			isa = PBXGroup;
+			children = (
+				BADB019024E6C646004AC43E /* BoxInteractionServices.swift */,
+				BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */,
+			);
+			path = BoxInteractionServices;
 			sourceTree = "<group>";
 		};
 		C3566D6349C645393A2723BC /* Pods */ = {
@@ -428,13 +456,17 @@
 				BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */,
 				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
 				BAB8F1D124D36B8200F6E5B7 /* LocalStorageServices.swift in Sources */,
+				BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */,
 				BAB8F1B824D22E8400F6E5B7 /* UITextFeild.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
+				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
 				BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */,
+				BADB018D24E6C5EB004AC43E /* AccountService.swift in Sources */,
 				BAC05C5424CCB9F000EBB2AE /* CoreAssemby.swift in Sources */,
 				BAC05C5F24CCBA7A00EBB2AE /* ServiceAssembly.swift in Sources */,
 				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
 				BA0AF89F24DF6A0900F27395 /* EmployeeServices.swift in Sources */,
+				BADB018F24E6C614004AC43E /* AccoutnProtocol.swift in Sources */,
 				BAB8F1D324D370FF00F6E5B7 /* User.swift in Sources */,
 				BAC05C5824CCBA1F00EBB2AE /* ViewAssembly.swift in Sources */,
 				BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */,
