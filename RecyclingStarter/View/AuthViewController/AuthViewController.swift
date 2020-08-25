@@ -24,6 +24,7 @@ class AuthViewController: UIViewController {
     
     private let authService = AuthServices()
     private let LocalStorageService = LocalStorageServices()
+    private let router = Router()
     
     
     // MARK: Styles
@@ -58,9 +59,15 @@ class AuthViewController: UIViewController {
         }
     }
     
+    private enum FieldType{
+        case email
+        
+        case password
+    }
+    
     init() {
-        self.emailField = Self.makeTextField(placeholder: "e-mail")
-        self.passwordField = Self.makeTextField(placeholder: "password")
+        self.emailField = Self.makeTextField(type: .email)
+        self.passwordField = Self.makeTextField(type: .password)
         self.enterButton = Self.makeButton(title: "Войти")
         self.enterLabel = Self.makeLabel(text: "Войти в систему:")
         self.fogotPassButton = Self.makeAdditionalButton(title: "Забыли пароль?")
@@ -112,7 +119,6 @@ class AuthViewController: UIViewController {
         enterLabel.trailingToSuperview(offset: 0, relation: .equalOrGreater)
         
         emailField.topToBottom(of: enterLabel, offset: 30)
-//        emailField.widthToSuperview()
         emailField.centerXToSuperview()
         
         passwordField.topToBottom(of: emailField, offset: 35)
@@ -147,11 +153,12 @@ class AuthViewController: UIViewController {
     
     func setupActions() {
         enterButton.addTarget(self, action: #selector(authRequest), for: .touchUpInside)
+        singInButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
     }
 
 }
 
-// MARK: Auth Request
+// MARK: Button actions
 extension AuthViewController {
     @objc func authRequest() {
         guard let email = emailField.text, let password = passwordField.text else {
@@ -159,8 +166,7 @@ extension AuthViewController {
         }
         authService.autharisation(email: email, password: password) { (user) in
             if let user = user{
-                let employeeVC = EmployeeViewController(user: user)
-                UIApplication.shared.keyWindow?.rootViewController = employeeVC
+                self.router.presentEmployeeVC(user: user)
                 self.LocalStorageService.saveUserInfo(email: email, password: password)
             } else {
                 self.setFieldsColor(isError: true)
@@ -169,20 +175,36 @@ extension AuthViewController {
             }
         }
     }
+    
+    @objc private func goToRegistration() {
+        let vc = RegisterViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
 
 // MARK: Setup UI elements
 extension AuthViewController {
-    private static func makeTextField(placeholder: String) -> UIUnderlinedTextField{
+    private static func makeTextField(type: FieldType) -> UIUnderlinedTextField{
         let textField = UIUnderlinedTextField()
         textField.style = Style.textStyle
         textField.font = Style.textStyle.font?.font(size: Style.textStyle.size)
         textField.textColor = Style.textStyle.color?.color
-        textField.attributedPlaceholder = placeholder.set(style: Style.placeholderStyle)
         textField.textAlignment = .left
         textField.tintColor = AppColor.placeholder
         textField.width(UIScreen.main.bounds.width - 100)
+        var placeholder = ""
+        
+        switch type {
+        case .email:
+            placeholder = "e-mail"
+            textField.keyboardType = .emailAddress
+        case .password:
+            placeholder = "password"
+            textField.isSecureTextEntry = true
+        }
+        textField.attributedPlaceholder = placeholder.set(style: Style.placeholderStyle)
+        
         return textField
     }
     

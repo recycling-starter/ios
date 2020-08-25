@@ -282,8 +282,6 @@ class EmployeeViewController: UIViewController {
     private static func makeBoxImageView(part: BoxImage) -> UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-//        imageView.height(271)
-//        imageView.width(271)
         
         switch part {
         case .low:

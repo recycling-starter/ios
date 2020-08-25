@@ -42,4 +42,16 @@ class Router {
         
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }
+    
+    func presentRegistrationVC() {
+        let vc = RegisterViewController()
+        
+        UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
+    }
+    
+    func presentEmployeeVC(user: User) {
+        let vc = EmployeeViewController(user: user)
+        
+        UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
+    }
 }
