@@ -20,6 +20,7 @@ class EmployeeViewController: UIViewController {
     var box = Box(filling: 0, id: 0, result: "not loaded")
     private var boxFilling = boxStates.state0
     private var fillingTopConstraint: Constraint?
+    private var boxFillingShift: CGFloat = 0
     
     private let infoView: UIView
     private let minusButton: UIButton
@@ -110,16 +111,19 @@ class EmployeeViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupButtonActions()
+        setupGradient()
         getBox()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.gradientLayer100 = makeGradient(state: .state100)
-        self.gradientLayer75 = makeGradient(state: .state75)
-        self.gradientLayer50 = makeGradient(state: .state50)
-        self.gradientLayer25 = makeGradient(state: .state25)
-        self.gradientLayer0 = makeGradient(state: .state0)
+        boxFillingShift = 0.1 * boxMiddleImageView.bounds.height
+        print(boxFillingShift)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        boxFillingShift = 0.035 * boxMiddleImageView.bounds.height
+        print(boxFillingShift)
     }
     
     
@@ -181,6 +185,14 @@ class EmployeeViewController: UIViewController {
         boxTopImageView.centerXToSuperview(offset: 4)
         boxTopImageView.topToBottom(of: logoutButton, offset: 35)
         boxTopImageView.bottomToTop(of: infoView, offset: -35)
+    }
+    
+    private func setupGradient() {
+        self.gradientLayer100 = makeGradient(state: .state100)
+        self.gradientLayer75 = makeGradient(state: .state75)
+        self.gradientLayer50 = makeGradient(state: .state50)
+        self.gradientLayer25 = makeGradient(state: .state25)
+        self.gradientLayer0 = makeGradient(state: .state0)
     }
     
     private func makeGradient(state: boxStates) -> CAGradientLayer {
@@ -309,7 +321,8 @@ class EmployeeViewController: UIViewController {
         case .state0:
             boxFilling = .state25
             animation = {
-                self.fillingTopConstraint?.constant = 50
+                let boxShift = 35 + 3 * self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer25.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState25Up
@@ -317,7 +330,8 @@ class EmployeeViewController: UIViewController {
         case .state25:
             boxFilling = .state50
             animation = {
-                self.fillingTopConstraint?.constant = 45
+                let boxShift = 35 + 2 * self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer50.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -325,7 +339,8 @@ class EmployeeViewController: UIViewController {
         case .state50:
             boxFilling = .state75
             animation = {
-                self.fillingTopConstraint?.constant = 40
+                let boxShift = 35 + self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer75.opacity = 1
                 self.statusLabel.textColor = AppColor.boxState75Up
@@ -356,7 +371,8 @@ class EmployeeViewController: UIViewController {
         case .state100:
             boxFilling = .state75
             animation = {
-                self.fillingTopConstraint?.constant = 40
+                let boxShift = 35 + self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state75Text
                 self.gradientLayer100.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState75Up
@@ -364,7 +380,8 @@ class EmployeeViewController: UIViewController {
         case .state75:
             boxFilling = .state50
             animation = {
-                self.fillingTopConstraint?.constant = 45
+                let boxShift = 35 + 2 * self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state50Text
                 self.gradientLayer75.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -372,7 +389,8 @@ class EmployeeViewController: UIViewController {
         case .state50:
             boxFilling = .state25
             animation = {
-                self.fillingTopConstraint?.constant = 50
+                let boxShift = 35 + 3 * self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state25Text
                 self.gradientLayer50.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState50Up
@@ -380,7 +398,8 @@ class EmployeeViewController: UIViewController {
         case .state25:
             boxFilling = .state0
             animation = {
-                self.fillingTopConstraint?.constant = 85
+                let boxShift = 35 + 4 * self.boxFillingShift
+                self.fillingTopConstraint?.constant = boxShift
                 self.statusLabel.text = boxStates.state0Text
                 self.gradientLayer25.opacity = 0
                 self.statusLabel.textColor = AppColor.boxState0Up
