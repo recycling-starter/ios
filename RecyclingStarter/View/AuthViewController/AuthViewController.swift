@@ -193,13 +193,32 @@ extension AuthViewController {
         textField.textAlignment = .left
         textField.tintColor = AppColor.placeholder
         textField.width(UIScreen.main.bounds.width - 100)
+        textField.leftViewMode = .always
+        let imageView = UIImageView()
+        let leftView = UIView()
+        leftView.addSubview(imageView)
+        leftView.width(29)
+        leftView.height(24)
+        imageView.contentMode = .scaleAspectFit
+        textField.leftView = leftView
         var placeholder = ""
         
         switch type {
         case .email:
+            let image = AppImage.emailIconImage?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = AppColor.placeholder
+            imageView.image = image
+            imageView.bottomToSuperview(offset: -6)
+            imageView.leadingToSuperview(offset: 8)
             placeholder = "e-mail"
+            textField.textContentType = .emailAddress
             textField.keyboardType = .emailAddress
         case .password:
+            let image = AppImage.passwordIconImage?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = AppColor.placeholder
+            imageView.image = image
+            imageView.bottomToSuperview(offset: -4)
+            imageView.leadingToSuperview(offset: 10)
             placeholder = "password"
             textField.isSecureTextEntry = true
         }

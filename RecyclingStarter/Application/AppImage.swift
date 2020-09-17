@@ -18,6 +18,10 @@ enum AppImage {
     
     static let logoutImage = UIImage(named: "logout")
     
+    static let emailIconImage = UIImage(named: "email_icon")
+    
+    static let passwordIconImage = UIImage(named: "password_icon")
+    
     //Separated box image
     
     static let boxLow = UIImage(named: "box_low")
