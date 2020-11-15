@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -120,6 +120,13 @@
 				BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */,
 			);
 			path = EmployeeServices;
+			sourceTree = "<group>";
+		};
+		BA5E817E25153ED9000D0B3A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */ = {
@@ -253,6 +260,7 @@
 		BAC05C4E24CCB94900EBB2AE /* AuthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BA5E817E25153ED9000D0B3A /* Views */,
 				BAC05C6024CCBD2300EBB2AE /* AuthViewController.swift */,
 			);
 			path = AuthViewController;

@@ -12,7 +12,6 @@ extension UITextField {
     func shake() {
         let shake = CASpringAnimation(keyPath: "position")
         shake.duration = 0.15
-//        shake.repeatCount = 5
         shake.autoreverses = true
         shake.initialVelocity = 1.5
         shake.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeOut)

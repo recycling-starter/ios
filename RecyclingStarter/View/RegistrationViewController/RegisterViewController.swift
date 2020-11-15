@@ -121,7 +121,7 @@ class RegisterViewController: UIViewController {
         field.attributedPlaceholder = placeholder.set(style: Style.placeholderStyle)
         field.textColor = Style.textFieldStyle.color?.color
         field.font = Style.textFieldStyle.font?.font(size: Style.textFieldStyle.size)
-        field.height(35)
+        field.height(40)
         return field
     }
     

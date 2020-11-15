@@ -25,6 +25,8 @@ enum AppColor {
     //MARK: Buttons
     static let button = UIColor(named: "button_main")
     
+    static let buttomUnavailable = UIColor(named: "button_main_unanailable")
+    
     static let buttonText = UIColor(named: "button_text")
     
     static let pickerButton = UIColor(named: "picker_button")

@@ -14,8 +14,8 @@ import Alamofire
 class AuthViewController: UIViewController {
     
     private let emailField: UIUnderlinedTextField
-    private let passwordField: UIUnderlinedTextField
-    private let enterButton: UIButton
+    private let passwordField: UITextField
+    private let enterButton: NewButton
     private let enterLabel: UILabel
     private let fogotPassButton: UIButton
     private let noAccountLabel: UILabel
@@ -68,6 +68,7 @@ class AuthViewController: UIViewController {
     init() {
         self.emailField = Self.makeTextField(type: .email)
         self.passwordField = Self.makeTextField(type: .password)
+//        self.passwordField = Self.makePasswordTextField()
         self.enterButton = Self.makeButton(title: "Войти")
         self.enterLabel = Self.makeLabel(text: "Войти в систему:")
         self.fogotPassButton = Self.makeAdditionalButton(title: "Забыли пароль?")
@@ -161,9 +162,12 @@ class AuthViewController: UIViewController {
 // MARK: Button actions
 extension AuthViewController {
     @objc func authRequest() {
+        enterButton.isEnabled = false
         guard let email = emailField.text, let password = passwordField.text else {
+            enterButton.isEnabled = true
             return
         }
+        
         authService.autharisation(email: email, password: password) { (user) in
             if let user = user{
                 self.router.presentEmployeeVC(user: user)
@@ -173,6 +177,7 @@ extension AuthViewController {
                 self.emailField.shake()
                 self.passwordField.shake()
             }
+            self.enterButton.isEnabled = true
         }
     }
     
@@ -190,8 +195,10 @@ extension AuthViewController {
         textField.style = Style.textStyle
         textField.font = Style.textStyle.font?.font(size: Style.textStyle.size)
         textField.textColor = Style.textStyle.color?.color
-        textField.textAlignment = .left
         textField.tintColor = AppColor.placeholder
+        textField.textAlignment = .left
+        textField.autocapitalizationType = .none
+//        textField.autocorrectionType = .no
         textField.width(UIScreen.main.bounds.width - 100)
         textField.leftViewMode = .always
         let imageView = UIImageView()
@@ -211,8 +218,9 @@ extension AuthViewController {
             imageView.bottomToSuperview(offset: -6)
             imageView.leadingToSuperview(offset: 8)
             placeholder = "e-mail"
-            textField.textContentType = .emailAddress
-            textField.keyboardType = .emailAddress
+//            textField.textContentType = .emailAddress
+//            textField.keyboardType = .emailAddress
+//            textField.isSecureTextEntry = true
         case .password:
             let image = AppImage.passwordIconImage?.withRenderingMode(.alwaysTemplate)
             imageView.tintColor = AppColor.placeholder
@@ -220,6 +228,7 @@ extension AuthViewController {
             imageView.bottomToSuperview(offset: -4)
             imageView.leadingToSuperview(offset: 10)
             placeholder = "password"
+//            textField.keyboardType = .emailAddress
             textField.isSecureTextEntry = true
         }
         textField.attributedPlaceholder = placeholder.set(style: Style.placeholderStyle)
@@ -227,8 +236,14 @@ extension AuthViewController {
         return textField
     }
     
-    private static func makeButton(title: String) -> UIButton{
-        let button = UIButton(type: .system)
+    private static func makePasswordTextField() -> UITextField{
+        let textField = UITextField()
+        textField.isSecureTextEntry = true
+        return textField
+    }
+    
+    private static func makeButton(title: String) -> NewButton{
+        let button = NewButton(type: .system)
         let styledTitle = title.set(style: Style.mainButtonStyle)
         button.setAttributedTitle(styledTitle, for: .normal)
         button.height(50)
@@ -287,7 +302,7 @@ extension AuthViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -295,6 +310,14 @@ extension AuthViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {
             self.setFieldsColor(isError: false)
+        }
+    }
+}
+
+class NewButton: UIButton {
+    override open var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? AppColor.button : AppColor.buttomUnavailable
         }
     }
 }
