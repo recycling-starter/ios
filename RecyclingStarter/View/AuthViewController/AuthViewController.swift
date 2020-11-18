@@ -13,8 +13,8 @@ import Alamofire
 
 class AuthViewController: UIViewController {
     
-    private let emailField: UIUnderlinedTextField
-    private let passwordField: UITextField
+    private let emailField: UserInfoTextField
+    private let passwordField: UserInfoTextField
     private let enterButton: NewButton
     private let enterLabel: UILabel
     private let fogotPassButton: UIButton
@@ -23,7 +23,7 @@ class AuthViewController: UIViewController {
     private let logoView: UIImageView
     
     private let authService = AuthServices()
-    private let LocalStorageService = LocalStorageServices()
+    private let localStorageService = LocalStorageServices()
     private let router = Router()
     
     
@@ -59,16 +59,9 @@ class AuthViewController: UIViewController {
         }
     }
     
-    private enum FieldType{
-        case email
-        
-        case password
-    }
-    
     init() {
-        self.emailField = Self.makeTextField(type: .email)
-        self.passwordField = Self.makeTextField(type: .password)
-//        self.passwordField = Self.makePasswordTextField()
+        self.emailField = LoginTextField()
+        self.passwordField = PasswordTextField()
         self.enterButton = Self.makeButton(title: "Войти")
         self.enterLabel = Self.makeLabel(text: "Войти в систему:")
         self.fogotPassButton = Self.makeAdditionalButton(title: "Забыли пароль?")
@@ -120,7 +113,7 @@ class AuthViewController: UIViewController {
         enterLabel.trailingToSuperview(offset: 0, relation: .equalOrGreater)
         
         emailField.topToBottom(of: enterLabel, offset: 30)
-        emailField.centerXToSuperview()
+        emailField.widthToSuperview()
         
         passwordField.topToBottom(of: emailField, offset: 35)
         passwordField.widthToSuperview()
@@ -171,11 +164,10 @@ extension AuthViewController {
         authService.autharisation(email: email, password: password) { (user) in
             if let user = user{
                 self.router.presentEmployeeVC(user: user)
-                self.LocalStorageService.saveUserInfo(email: email, password: password)
+                self.localStorageService.saveUserInfo(email: email, password: password)
             } else {
-                self.setFieldsColor(isError: true)
-                self.emailField.shake()
-                self.passwordField.shake()
+                self.emailField.errorSignalize()
+                self.passwordField.errorSignalize()
             }
             self.enterButton.isEnabled = true
         }
@@ -190,57 +182,6 @@ extension AuthViewController {
 
 // MARK: Setup UI elements
 extension AuthViewController {
-    private static func makeTextField(type: FieldType) -> UIUnderlinedTextField{
-        let textField = UIUnderlinedTextField()
-        textField.style = Style.textStyle
-        textField.font = Style.textStyle.font?.font(size: Style.textStyle.size)
-        textField.textColor = Style.textStyle.color?.color
-        textField.tintColor = AppColor.placeholder
-        textField.textAlignment = .left
-        textField.autocapitalizationType = .none
-//        textField.autocorrectionType = .no
-        textField.width(UIScreen.main.bounds.width - 100)
-        textField.leftViewMode = .always
-        let imageView = UIImageView()
-        let leftView = UIView()
-        leftView.addSubview(imageView)
-        leftView.width(29)
-        leftView.height(24)
-        imageView.contentMode = .scaleAspectFit
-        textField.leftView = leftView
-        var placeholder = ""
-        
-        switch type {
-        case .email:
-            let image = AppImage.emailIconImage?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = AppColor.placeholder
-            imageView.image = image
-            imageView.bottomToSuperview(offset: -6)
-            imageView.leadingToSuperview(offset: 8)
-            placeholder = "e-mail"
-//            textField.textContentType = .emailAddress
-//            textField.keyboardType = .emailAddress
-//            textField.isSecureTextEntry = true
-        case .password:
-            let image = AppImage.passwordIconImage?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = AppColor.placeholder
-            imageView.image = image
-            imageView.bottomToSuperview(offset: -4)
-            imageView.leadingToSuperview(offset: 10)
-            placeholder = "password"
-//            textField.keyboardType = .emailAddress
-            textField.isSecureTextEntry = true
-        }
-        textField.attributedPlaceholder = placeholder.set(style: Style.placeholderStyle)
-        
-        return textField
-    }
-    
-    private static func makePasswordTextField() -> UITextField{
-        let textField = UITextField()
-        textField.isSecureTextEntry = true
-        return textField
-    }
     
     private static func makeButton(title: String) -> NewButton{
         let button = NewButton(type: .system)
@@ -281,19 +222,6 @@ extension AuthViewController {
         return label
     }
     
-    private func setFieldsColor(isError: Bool) {
-        if isError {
-            emailField.tintColor = AppColor.error
-            emailField.textColor = AppColor.error
-            passwordField.tintColor = AppColor.error
-            passwordField.textColor = AppColor.error
-        } else {
-            emailField.tintColor = AppColor.placeholder
-            emailField.textColor = AppColor.label
-            passwordField.tintColor = AppColor.placeholder
-            passwordField.textColor = AppColor.label
-        }
-    }
 }
 
 //MARK: UITextFieldDelegate
@@ -308,9 +236,8 @@ extension AuthViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.3) {
-            self.setFieldsColor(isError: false)
-        }
+        self.emailField.cleanErrorSignalize()
+        self.passwordField.cleanErrorSignalize()
     }
 }
 

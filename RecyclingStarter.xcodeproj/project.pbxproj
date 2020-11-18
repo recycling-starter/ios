@@ -11,8 +11,10 @@
 		BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89C24DEEC9800F27395 /* Debounce.swift */; };
 		BA0AF89F24DF6A0900F27395 /* EmployeeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */; };
 		BA0AF8A124DF6ACE00F27395 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF8A024DF6ACE00F27395 /* Box.swift */; };
+		BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2802565CFFB00A11656 /* LoginTextField.swift */; };
+		BA5EF2842565D02000A11656 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2832565D02000A11656 /* PasswordTextField.swift */; };
+		BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */; };
 		BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */; };
-		BAB8F1B824D22E8400F6E5B7 /* UITextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B724D22E8400F6E5B7 /* UITextFeild.swift */; };
 		BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B924D3607500F6E5B7 /* Router.swift */; };
 		BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1CB24D3638E00F6E5B7 /* CoreDataManager.swift */; };
 		BAB8F1D124D36B8200F6E5B7 /* LocalStorageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1D024D36B8200F6E5B7 /* LocalStorageServices.swift */; };
@@ -55,8 +57,10 @@
 		BA0AF89C24DEEC9800F27395 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeServices.swift; sourceTree = "<group>"; };
 		BA0AF8A024DF6ACE00F27395 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		BA5EF2802565CFFB00A11656 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		BA5EF2832565D02000A11656 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextField.swift; sourceTree = "<group>"; };
 		BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
-		BAB8F1B724D22E8400F6E5B7 /* UITextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFeild.swift; sourceTree = "<group>"; };
 		BAB8F1B924D3607500F6E5B7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BAB8F1CB24D3638E00F6E5B7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BAB8F1D024D36B8200F6E5B7 /* LocalStorageServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServices.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 		BA5E817E25153ED9000D0B3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BA5EF2802565CFFB00A11656 /* LoginTextField.swift */,
+				BA5EF2832565D02000A11656 /* PasswordTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,8 +275,8 @@
 		BAC05C5924CCBA2D00EBB2AE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */,
 				BAC05C5A24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift */,
-				BAB8F1B724D22E8400F6E5B7 /* UITextFeild.swift */,
 				BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */,
 				BADB018824E36D54004AC43E /* UILabelExtension.swift */,
 			);
@@ -442,12 +448,12 @@
 				BA0AF8A124DF6ACE00F27395 /* Box.swift in Sources */,
 				BAC05C6124CCBD2300EBB2AE /* AuthViewController.swift in Sources */,
 				BAB8F1D924D38A1B00F6E5B7 /* LoadScreenViewController.swift in Sources */,
+				BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */,
 				BAC05C5D24CCBA6F00EBB2AE /* RegisterViewController.swift in Sources */,
 				BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */,
 				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
 				BAB8F1D124D36B8200F6E5B7 /* LocalStorageServices.swift in Sources */,
 				BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */,
-				BAB8F1B824D22E8400F6E5B7 /* UITextFeild.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
 				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
 				BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */,
@@ -461,12 +467,14 @@
 				BAC05C5824CCBA1F00EBB2AE /* ViewAssembly.swift in Sources */,
 				BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */,
 				BAC05C2724CCB40900EBB2AE /* SceneDelegate.swift in Sources */,
+				BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */,
 				BAB8F1D724D37BC000F6E5B7 /* UserInfo+CoreDataProperties.swift in Sources */,
 				BAC05C6324CCBD9200EBB2AE /* AppColor.swift in Sources */,
 				BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */,
 				BAC05C6724CCE3DB00EBB2AE /* NetworkService.swift in Sources */,
 				BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */,
 				BAB8F1D624D37BC000F6E5B7 /* UserInfo+CoreDataClass.swift in Sources */,
+				BA5EF2842565D02000A11656 /* PasswordTextField.swift in Sources */,
 				BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */,
 				BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */,
 				BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */,
