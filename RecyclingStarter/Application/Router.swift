@@ -24,7 +24,7 @@ class Router {
             if let email = loadInfo?.email, let password = loadInfo?.password{
                 self.authService.autharisation(email: email, password: password) { (user) in
                     if let user = user{
-                        vc = EmployeeViewController(user: user)
+                        vc = boxManagmentViewController(token: , boxData: user.)
                     }
                     UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .easeOut))
                 }
@@ -49,8 +49,8 @@ class Router {
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }
     
-    func presentEmployeeVC(user: User) {
-        let vc = EmployeeViewController(user: user)
+    func presentEmployeeVC(user: UserToken) {
+        let vc = boxManagmentViewController(user: user)
         
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }

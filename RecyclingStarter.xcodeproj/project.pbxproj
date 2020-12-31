@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		3C16FAE7A97216CA081D80CB /* libPods-RecyclingStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD78D78AD35C9A839181205 /* libPods-RecyclingStarter.a */; };
 		BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89C24DEEC9800F27395 /* Debounce.swift */; };
-		BA0AF89F24DF6A0900F27395 /* EmployeeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */; };
-		BA0AF8A124DF6ACE00F27395 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF8A024DF6ACE00F27395 /* Box.swift */; };
+		BA0AF8A124DF6ACE00F27395 /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF8A024DF6ACE00F27395 /* BoxData.swift */; };
 		BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2802565CFFB00A11656 /* LoginTextField.swift */; };
 		BA5EF2842565D02000A11656 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2832565D02000A11656 /* PasswordTextField.swift */; };
 		BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */; };
+		BA91D717259D5EC100768830 /* AppHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91D716259D5EC100768830 /* AppHost.swift */; };
 		BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */; };
 		BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B924D3607500F6E5B7 /* Router.swift */; };
 		BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1CB24D3638E00F6E5B7 /* CoreDataManager.swift */; };
@@ -41,9 +41,9 @@
 		BAC05C6324CCBD9200EBB2AE /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6224CCBD9200EBB2AE /* AppColor.swift */; };
 		BAC05C6724CCE3DB00EBB2AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6624CCE3DB00EBB2AE /* NetworkService.swift */; };
 		BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */; };
-		BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */; };
+		BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */; };
 		BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018824E36D54004AC43E /* UILabelExtension.swift */; };
-		BADB018D24E6C5EB004AC43E /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018C24E6C5EB004AC43E /* AccountService.swift */; };
+		BADB018D24E6C5EB004AC43E /* AccountDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018C24E6C5EB004AC43E /* AccountDataManager.swift */; };
 		BADB018F24E6C614004AC43E /* AccoutnProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018E24E6C614004AC43E /* AccoutnProtocol.swift */; };
 		BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019024E6C646004AC43E /* BoxInteractionServices.swift */; };
 		BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */; };
@@ -55,11 +55,11 @@
 		4BD78D78AD35C9A839181205 /* libPods-RecyclingStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecyclingStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingStarter.release.xcconfig"; path = "Target Support Files/Pods-RecyclingStarter/Pods-RecyclingStarter.release.xcconfig"; sourceTree = "<group>"; };
 		BA0AF89C24DEEC9800F27395 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
-		BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeServices.swift; sourceTree = "<group>"; };
-		BA0AF8A024DF6ACE00F27395 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		BA0AF8A024DF6ACE00F27395 /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
 		BA5EF2802565CFFB00A11656 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		BA5EF2832565D02000A11656 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextField.swift; sourceTree = "<group>"; };
+		BA91D716259D5EC100768830 /* AppHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHost.swift; sourceTree = "<group>"; };
 		BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		BAB8F1B924D3607500F6E5B7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BAB8F1CB24D3638E00F6E5B7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -89,9 +89,9 @@
 		BAC05C6224CCBD9200EBB2AE /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		BAC05C6624CCE3DB00EBB2AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
-		BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
+		BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boxManagmentViewController.swift; sourceTree = "<group>"; };
 		BADB018824E36D54004AC43E /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
-		BADB018C24E6C5EB004AC43E /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		BADB018C24E6C5EB004AC43E /* AccountDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataManager.swift; sourceTree = "<group>"; };
 		BADB018E24E6C614004AC43E /* AccoutnProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccoutnProtocol.swift; sourceTree = "<group>"; };
 		BADB019024E6C646004AC43E /* BoxInteractionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionServices.swift; sourceTree = "<group>"; };
 		BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionProtocol.swift; sourceTree = "<group>"; };
@@ -116,14 +116,6 @@
 				4BD78D78AD35C9A839181205 /* libPods-RecyclingStarter.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BA0AF89B24DEEC1200F27395 /* EmployeeServices */ = {
-			isa = PBXGroup;
-			children = (
-				BA0AF89E24DF6A0900F27395 /* EmployeeServices.swift */,
-			);
-			path = EmployeeServices;
 			sourceTree = "<group>";
 		};
 		BA5E817E25153ED9000D0B3A /* Views */ = {
@@ -222,7 +214,6 @@
 			children = (
 				BADB018B24E6C5CB004AC43E /* BoxInteractionServices */,
 				BADB018A24E6C590004AC43E /* AccoutnServices */,
-				BA0AF89B24DEEC1200F27395 /* EmployeeServices */,
 				BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */,
 				BAC05C6524CCE35B00EBB2AE /* AuthServices */,
 				BAC05C5E24CCBA7A00EBB2AE /* ServiceAssembly.swift */,
@@ -235,12 +226,13 @@
 			children = (
 				BAC05C2424CCB40900EBB2AE /* AppDelegate.swift */,
 				BAC05C2624CCB40900EBB2AE /* SceneDelegate.swift */,
+				BA91D716259D5EC100768830 /* AppHost.swift */,
 				BAC05C6224CCBD9200EBB2AE /* AppColor.swift */,
 				BAC05C5124CCB9B800EBB2AE /* AppFont.swift */,
 				BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */,
 				BAB8F1B924D3607500F6E5B7 /* Router.swift */,
 				BAB8F1D224D370FF00F6E5B7 /* User.swift */,
-				BA0AF8A024DF6ACE00F27395 /* Box.swift */,
+				BA0AF8A024DF6ACE00F27395 /* BoxData.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -313,7 +305,7 @@
 		BAC05C6B24CE2C3A00EBB2AE /* EmployeeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BAC05C6C24CE2C5400EBB2AE /* EmployeeViewController.swift */,
+				BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */,
 			);
 			path = EmployeeViewController;
 			sourceTree = "<group>";
@@ -321,7 +313,7 @@
 		BADB018A24E6C590004AC43E /* AccoutnServices */ = {
 			isa = PBXGroup;
 			children = (
-				BADB018C24E6C5EB004AC43E /* AccountService.swift */,
+				BADB018C24E6C5EB004AC43E /* AccountDataManager.swift */,
 				BADB018E24E6C614004AC43E /* AccoutnProtocol.swift */,
 			);
 			path = AccoutnServices;
@@ -445,7 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0AF8A124DF6ACE00F27395 /* Box.swift in Sources */,
+				BA0AF8A124DF6ACE00F27395 /* BoxData.swift in Sources */,
 				BAC05C6124CCBD2300EBB2AE /* AuthViewController.swift in Sources */,
 				BAB8F1D924D38A1B00F6E5B7 /* LoadScreenViewController.swift in Sources */,
 				BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */,
@@ -456,12 +448,11 @@
 				BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
 				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
-				BAC05C6D24CE2C5400EBB2AE /* EmployeeViewController.swift in Sources */,
-				BADB018D24E6C5EB004AC43E /* AccountService.swift in Sources */,
+				BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */,
+				BADB018D24E6C5EB004AC43E /* AccountDataManager.swift in Sources */,
 				BAC05C5424CCB9F000EBB2AE /* CoreAssemby.swift in Sources */,
 				BAC05C5F24CCBA7A00EBB2AE /* ServiceAssembly.swift in Sources */,
 				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
-				BA0AF89F24DF6A0900F27395 /* EmployeeServices.swift in Sources */,
 				BADB018F24E6C614004AC43E /* AccoutnProtocol.swift in Sources */,
 				BAB8F1D324D370FF00F6E5B7 /* User.swift in Sources */,
 				BAC05C5824CCBA1F00EBB2AE /* ViewAssembly.swift in Sources */,
@@ -478,6 +469,7 @@
 				BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */,
 				BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */,
 				BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */,
+				BA91D717259D5EC100768830 /* AppHost.swift in Sources */,
 				BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

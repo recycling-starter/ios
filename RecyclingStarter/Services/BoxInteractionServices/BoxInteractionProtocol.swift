@@ -8,8 +8,8 @@
 
 protocol BoxInteractionProtocol {
     
-    func getBox(user: User, callback: @escaping(Box?) -> Void)
+    func getBox(box: BoxData, token: String, complitionHandler: @escaping(BoxData?) -> Void)
     
-    func fillBox(user: User, box: Box, filling: Int, callback: @escaping(Box?) -> Void)
+    func fillBox(token: String, box: BoxData, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void)
     
 }

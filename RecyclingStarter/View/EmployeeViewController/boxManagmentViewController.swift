@@ -10,14 +10,14 @@ import UIKit
 import TinyConstraints
 import SwiftRichString
 
-class EmployeeViewController: UIViewController {
+class boxManagmentViewController: UIViewController {
     
-    private let employeeService = EmployeeServices()
+    private let boxInteractionServise = BoxInteractionServices()
     private let localStorageService = LocalStorageServices()
     private let router = Router()
     
-    let user: User
-    var box = Box(filling: 0, id: 0, result: "not loaded")
+    let token: String
+    var boxData: BoxData
     private var boxFilling = boxStates.state0
     private var fillingTopConstraint: Constraint?
     private var boxFillingShift: CGFloat = 0
@@ -86,8 +86,9 @@ class EmployeeViewController: UIViewController {
         case top
     }
     
-    init(user: User) {
-        self.user = user
+    init(token: String, boxData: BoxData) {
+        self.token = token
+        self.boxData = boxData
         self.infoView = Self.makeInfoView()
         self.plusButton = Self.makeButton(isPlus: true)
         self.minusButton = Self.makeButton(isPlus: false)
@@ -448,7 +449,7 @@ class EmployeeViewController: UIViewController {
     // MARK: Network
     
     private func getBox() {
-        employeeService.getBox(user: user) { (newbox) in
+        boxInteractionServise.getBox(user: user) { (newbox) in
             if let newbox = newbox{
                 self.box = newbox
                 if let state = boxStates(rawValue: newbox.filling) {
