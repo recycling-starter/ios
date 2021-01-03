@@ -25,7 +25,7 @@ struct UserData: Codable {
     var email: String
     var phone: Int
     var room: String
-    var organization: String
+    var organization: Int
     var boxes: [BoxData]
     var isActive: Bool
     

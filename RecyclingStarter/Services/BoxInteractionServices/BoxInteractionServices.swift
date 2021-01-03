@@ -13,23 +13,22 @@ class BoxInteractionServices: BoxInteractionProtocol {
     let networkService = NetworkService()
     
     func getBox(box: BoxData, token: String, complitionHandler: @escaping(BoxData?) -> Void) {
-        
-        
         let url = AppHost.hostURL + "/v1/boxes/\(box.id)"
         
-        let headers: [String: String] = ["Content-Type": "application/json"]
+        let headers: [String: String] = [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer \(token)"
+        ]
         
-        let params = ["token": token]
-        
-        networkService.POSTrequest(url: url, params: params, headers: headers) { (stringData) in
-            if let data = stringData?.data(using: .utf8) {
-                let decoder = JSONDecoder()
-                do {
-                    let box = try decoder.decode(BoxData.self, from: data)
-                    complitionHandler(box)
-                    return
-                } catch { }
-            }
+        networkService.GETRequest(url: url, headers: headers) { (data) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            do {
+                let box = try decoder.decode(BoxData.self, from: data)
+                complitionHandler(box)
+                return
+            } catch { }
+            
             complitionHandler(nil)
         }
     }
@@ -44,11 +43,12 @@ class BoxInteractionServices: BoxInteractionProtocol {
         ]
         
         let params: [String: Any] = [
-            "filling": fullness
+            "fullness": fullness
         ]
         
-        networkService.POSTrequest(url: url, params: params, headers: headers) { (stringData) in
+        networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (stringData) in
             self.getBox(box: box, token: token) { (box) in
+                print(box)
                 complitionHandler(box)
             }
         }

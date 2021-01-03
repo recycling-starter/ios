@@ -12,7 +12,7 @@ class AuthServices {
     
     let networkService = NetworkService()
     
-    func autharisation(email: String, password: String, complitionHandler: @escaping(UserData?) -> Void) {
+    func autharisation(email: String, password: String, complitionHandler: @escaping(UserData?, String) -> Void) {
         
         let params: [String: Any] = [
             "email" : email.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -24,18 +24,18 @@ class AuthServices {
         
         let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded"]
         
-        networkService.POSTrequest(url: url, params: params, headers: headers) { (stringData) in
-            if let data = stringData?.data(using: .utf8){
-                let decoder = JSONDecoder()
-                do {
-                    let userToken = try decoder.decode(UserToken.self, from: data)
-                    self.getUserData(userToken: userToken) { (userData) in
-                        complitionHandler(userData)
-                    }
-                    return
-                } catch { }
-            }
-            complitionHandler(nil)
+        networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .post) { (data) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            do {
+                let userToken = try decoder.decode(UserToken.self, from: data)
+                self.getUserData(userToken: userToken) { (userData) in
+                    complitionHandler(userData, userToken.token)
+                }
+                return
+            } catch { }
+            
+            complitionHandler(nil, "")
         }
     }
     
@@ -46,14 +46,13 @@ class AuthServices {
         
         let headers: [String: String] = ["Authorization": "Bearer \(userToken.token)"]
         
-        networkService.GETRequest(url: url, headers: headers) { (stringData) in
-            if let data = stringData?.data(using: .utf8) {
-                let decoder = JSONDecoder()
-                do {
-                    let userData = try decoder.decode(UserData.self, from: data)
-                    complitionHandler(userData)
-                } catch  { }
-            }
+        networkService.GETRequest(url: url, headers: headers) { (data) in
+            guard let data = data else { return }
+            print(data)
+            let decoder = JSONDecoder()
+            let userData = try! decoder.decode(UserData.self, from: data)
+            complitionHandler(userData)
+            
             complitionHandler(nil)
         }
     }

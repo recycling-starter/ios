@@ -9,7 +9,7 @@
 import Foundation
 
 struct BoxData: Codable {
-    var fullness: Int
     var id: Int
+    var fullness: Int
     var room: String
 }

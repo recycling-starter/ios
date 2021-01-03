@@ -22,9 +22,10 @@ class Router {
         
         localStorageService.loadUserData { (loadInfo) in
             if let email = loadInfo?.email, let password = loadInfo?.password{
-                self.authService.autharisation(email: email, password: password) { (user) in
-                    if let user = user{
-                        vc = boxManagmentViewController(token: , boxData: user.)
+                self.authService.autharisation(email: email, password: password) { (userData, token) in
+                    if let userData = userData{
+                        print(userData.boxes)
+                        vc = BoxListViewController(token: token, boxList: userData.boxes)
                     }
                     UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .easeOut))
                 }
@@ -49,8 +50,14 @@ class Router {
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }
     
-    func presentEmployeeVC(user: UserToken) {
-        let vc = boxManagmentViewController(user: user)
+    func presentBoxManagmentVC(token: String, boxData: BoxData) {
+        let vc = BoxManagmentViewController(token: token, boxData: boxData)
+        
+        UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
+    }
+    
+    func presentBoxListViewController(token: String, boxList: [BoxData]) {
+        let vc = BoxListViewController(token: token, boxList: boxList)
         
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }

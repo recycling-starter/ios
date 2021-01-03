@@ -161,9 +161,9 @@ extension AuthViewController {
             return
         }
         
-        authService.autharisation(email: email, password: password) { (user) in
-            if let user = user{
-                self.router.presentEmployeeVC(user: user)
+        authService.autharisation(email: email, password: password) { (userData, token) in
+            if let userData = userData{
+                self.router.presentBoxListViewController(token: token, boxList: userData.boxes)
                 self.localStorageService.saveUserInfo(email: email, password: password)
             } else {
                 self.emailField.errorSignalize()

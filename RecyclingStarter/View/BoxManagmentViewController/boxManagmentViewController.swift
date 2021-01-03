@@ -1,5 +1,5 @@
 //
-//  EmployeeViewController.swift
+//  BoxManagmentViewController.swift
 //  RecyclingStarter
 //
 //  Created by  Matvey on 27.07.2020.
@@ -10,7 +10,7 @@ import UIKit
 import TinyConstraints
 import SwiftRichString
 
-class boxManagmentViewController: UIViewController {
+class BoxManagmentViewController: UIViewController {
     
     private let boxInteractionServise = BoxInteractionServices()
     private let localStorageService = LocalStorageServices()
@@ -113,7 +113,7 @@ class boxManagmentViewController: UIViewController {
         setupViews()
         setupButtonActions()
         setupGradient()
-        getBox()
+        getCurrentBoxState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -357,7 +357,7 @@ class boxManagmentViewController: UIViewController {
         default:
             break
         }
-        fillBox(filling: boxFilling.rawValue)
+        fillBox(fullness: boxFilling.rawValue)
         percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
         progressView.setProgress(Float(boxFilling.rawValue) / 100, animated: true)
         UIView.animate(withDuration: 0.5) {
@@ -408,7 +408,7 @@ class boxManagmentViewController: UIViewController {
         default:
             break
         }
-        fillBox(filling: boxFilling.rawValue)
+        fillBox(fullness: boxFilling.rawValue)
         progressView.setProgress(max(Float(boxFilling.rawValue) / 100, 0.01), animated: true)
         percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
         UIView.animate(withDuration: 0.5) {
@@ -418,8 +418,7 @@ class boxManagmentViewController: UIViewController {
     }
     
     private func updateBox(state: boxStates) {
-        
-        boxLabel.attributedText = "Контейнер \(box.id)".set(style: Style.boxLabel)
+        boxLabel.attributedText = "Контейнер \(boxData.id)".set(style: Style.boxLabel)
         
         if state.rawValue > 0 {
             increaseBoxFilling()
@@ -442,27 +441,25 @@ class boxManagmentViewController: UIViewController {
                     self.router.presentAuthVC()
                 }
             }
-            
         }
     }
     
     // MARK: Network
-    
-    private func getBox() {
-        boxInteractionServise.getBox(user: user) { (newbox) in
-            if let newbox = newbox{
-                self.box = newbox
-                if let state = boxStates(rawValue: newbox.filling) {
+    private func getCurrentBoxState() {
+        boxInteractionServise.getBox(box: boxData, token: token) { (newBox) in
+            if let newBox = newBox {
+                self.boxData = newBox
+                if let state = boxStates(rawValue: newBox.fullness) {
                     self.updateBox(state: state)
                 }
             }
         }
     }
     
-    private func fillBox(filling: Int) {
-        employeeService.fillBox(user: user, box: box, filling: filling) { (newBox) in
-            if let newBox = newBox{
-                self.box = newBox
+    private func fillBox(fullness: Int) {
+        boxInteractionServise.fillBox(token: token, box: boxData, fullness: fullness) { (newBox) in
+            if let newBox = newBox {
+                self.boxData = newBox
             }
         }
     }
