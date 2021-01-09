@@ -41,6 +41,6 @@ class BoxListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let box = boxList[indexPath.row]
-        router.presentBoxManagmentVC(token: token, boxData: box)
+        self.navigationController?.pushViewController(BoxManagmentViewController(token: token, boxData: box), animated: true)
     }
 }

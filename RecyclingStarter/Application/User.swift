@@ -25,9 +25,13 @@ struct UserData: Codable {
     var email: String
     var phone: Int
     var room: String
-    var organization: Int
+    var organization: Int?
     var boxes: [BoxData]
     var isActive: Bool
+    lazy var isAdmin: Bool = {
+        guard let organization = organization else { return false }
+        return true
+    }()
     
     enum CodingKeys: String, CodingKey {
         case id

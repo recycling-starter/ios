@@ -15,6 +15,8 @@
 		BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2802565CFFB00A11656 /* LoginTextField.swift */; };
 		BA5EF2842565D02000A11656 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2832565D02000A11656 /* PasswordTextField.swift */; };
 		BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */; };
+		BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */; };
+		BA838F3425A94057004E9428 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F3325A94057004E9428 /* ProfileViewController.swift */; };
 		BA91D717259D5EC100768830 /* AppHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91D716259D5EC100768830 /* AppHost.swift */; };
 		BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */; };
 		BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B924D3607500F6E5B7 /* Router.swift */; };
@@ -60,6 +62,8 @@
 		BA5EF2802565CFFB00A11656 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		BA5EF2832565D02000A11656 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextField.swift; sourceTree = "<group>"; };
+		BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTabBarController.swift; sourceTree = "<group>"; };
+		BA838F3325A94057004E9428 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BA91D716259D5EC100768830 /* AppHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHost.swift; sourceTree = "<group>"; };
 		BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		BAB8F1B924D3607500F6E5B7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -134,6 +138,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BA838F2D25A93F5F004E9428 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		BA838F3225A94043004E9428 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BA838F3325A94057004E9428 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
 		BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +216,8 @@
 		BAC05C4524CCB52D00EBB2AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BA838F3225A94043004E9428 /* ProfileViewController */,
+				BA838F2D25A93F5F004E9428 /* TabBarController */,
 				BA01B35425A14EC8007AF9AF /* BoxListViewController */,
 				BAC05C5924CCBA2D00EBB2AE /* Extensions */,
 				BAC05C6B24CE2C3A00EBB2AE /* BoxManagmentViewController */,
@@ -453,6 +475,7 @@
 				BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
 				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
+				BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */,
 				BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */,
 				BADB018D24E6C5EB004AC43E /* AccountDataManager.swift in Sources */,
 				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
@@ -473,6 +496,7 @@
 				BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */,
 				BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */,
 				BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */,
+				BA838F3425A94057004E9428 /* ProfileViewController.swift in Sources */,
 				BA91D717259D5EC100768830 /* AppHost.swift in Sources */,
 				BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */,
 			);
@@ -612,8 +636,9 @@
 			baseConfigurationReference = 09DF9F4128CF454E31BC103E /* Pods-RecyclingStarter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9N36M22CA6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RecyclingStarter/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -622,6 +647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = borisov.Matvey.RecyclingStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -632,8 +658,9 @@
 			baseConfigurationReference = 7664693B75F2AB51684A7557 /* Pods-RecyclingStarter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9N36M22CA6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RecyclingStarter/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -642,6 +669,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = borisov.Matvey.RecyclingStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

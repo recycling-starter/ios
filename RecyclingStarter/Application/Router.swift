@@ -24,8 +24,7 @@ class Router {
             if let email = loadInfo?.email, let password = loadInfo?.password{
                 self.authService.autharisation(email: email, password: password) { (userData, token) in
                     if let userData = userData{
-                        print(userData.boxes)
-                        vc = BoxListViewController(token: token, boxList: userData.boxes)
+                        vc = EmployeeTabBarController(token: token, userData: userData)
                     }
                     UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .easeOut))
                 }

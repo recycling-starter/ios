@@ -22,6 +22,10 @@ enum AppImage {
     
     static let passwordIconImage = UIImage(named: "password_icon")
     
+    static let boxIcon = UIImage(named: "box_icon")
+    
+    static let profileIcon = UIImage(named: "profile_icon")
+    
     //Separated box image
     
     static let boxLow = UIImage(named: "box_low")
