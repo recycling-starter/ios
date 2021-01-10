@@ -14,7 +14,6 @@ class BoxManagmentViewController: UIViewController {
     
     private let boxInteractionServise = BoxInteractionServices()
     private let localStorageService = LocalStorageServices()
-    private let router = Router()
     
     let token: String
     var boxData: BoxData
@@ -29,7 +28,6 @@ class BoxManagmentViewController: UIViewController {
     private let statusLabel: UILabel
     private let percentLabel: UILabel
     private let progressView: UIProgressView
-    private let logoutButton: UIButton
     private let boxLowImageView: UIImageView
     private let boxMiddleImageView: UIImageView
     private let boxTopImageView: UIImageView
@@ -96,7 +94,6 @@ class BoxManagmentViewController: UIViewController {
         self.statusLabel = Self.makeStatusLabel()
         self.percentLabel = Self.makePercentLabel()
         self.progressView = Self.makeProgressView()
-        self.logoutButton = Self.makeLogoutButton()
         self.boxLowImageView = Self.makeBoxImageView(part: .low)
         self.boxMiddleImageView = Self.makeBoxImageView(part: .middle)
         self.boxTopImageView = Self.makeBoxImageView(part: .top)
@@ -116,24 +113,12 @@ class BoxManagmentViewController: UIViewController {
         getCurrentBoxState()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        boxFillingShift = 0.1 * boxMiddleImageView.bounds.height
-        print(boxFillingShift)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         boxFillingShift = 0.035 * boxMiddleImageView.bounds.height
-        print(boxFillingShift)
     }
-    
     
     // MARK: Setup View
     func setupViews() {
-        
-        view.addSubview(logoutButton)
-        logoutButton.topToSuperview(offset: 24, usingSafeArea: true)
-        logoutButton.trailingToSuperview(offset: 23, usingSafeArea: true)
         
         view.addSubview(infoView)
         infoView.leadingToSuperview(offset: 20, usingSafeArea: true)
@@ -174,17 +159,17 @@ class BoxManagmentViewController: UIViewController {
         
         view.addSubview(boxLowImageView)
         boxLowImageView.centerXToSuperview(offset: 4)
-        boxLowImageView.topToBottom(of: logoutButton, offset: 35)
+        boxLowImageView.topToSuperview(offset: 35, usingSafeArea: true)
         boxLowImageView.bottomToTop(of: infoView, offset: -35)
         
         view.addSubview(boxMiddleImageView)
         boxMiddleImageView.centerXToSuperview(offset: 4)
-        fillingTopConstraint = boxMiddleImageView.topToBottom(of: logoutButton, offset: 85)
+        fillingTopConstraint = boxMiddleImageView.topToSuperview(offset: 85, usingSafeArea: true)
         boxMiddleImageView.bottomToTop(of: infoView, offset: -35)
         
         view.addSubview(boxTopImageView)
         boxTopImageView.centerXToSuperview(offset: 4)
-        boxTopImageView.topToBottom(of: logoutButton, offset: 35)
+        boxTopImageView.topToSuperview(offset: 35, usingSafeArea: true)
         boxTopImageView.bottomToTop(of: infoView, offset: -35)
     }
     
@@ -281,17 +266,6 @@ class BoxManagmentViewController: UIViewController {
         return progressView
     }
     
-    private static func makeLogoutButton() -> UIButton {
-        let button = UIButton()
-        
-        button.width(50)
-        button.height(50)
-        button.setImage(AppImage.logoutImage, for: .normal)
-        button.imageView?.width(28)
-        
-        return button
-    }
-    
     private static func makeBoxImageView(part: BoxImage) -> UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -313,7 +287,6 @@ class BoxManagmentViewController: UIViewController {
     func setupButtonActions() {
         minusButton.addTarget(self, action: #selector(decreaseBoxFilling), for: .touchUpInside)
         plusButton.addTarget(self, action: #selector(increaseBoxFilling), for: .touchUpInside)
-        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
     
     @objc func increaseBoxFilling() {
@@ -429,16 +402,6 @@ class BoxManagmentViewController: UIViewController {
                     if state.rawValue > 75 {
                         increaseBoxFilling()
                     }
-                }
-            }
-        }
-    }
-    
-    @objc private func logout() {
-        localStorageService.logoutUser {
-            DispatchQueue.main.async {
-                self.dismiss(animated: false) {
-                    self.router.presentAuthVC()
                 }
             }
         }

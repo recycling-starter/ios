@@ -49,14 +49,8 @@ class Router {
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }
     
-    func presentBoxManagmentVC(token: String, boxData: BoxData) {
-        let vc = BoxManagmentViewController(token: token, boxData: boxData)
-        
-        UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
-    }
-    
-    func presentBoxListViewController(token: String, boxList: [BoxData]) {
-        let vc = BoxListViewController(token: token, boxList: boxList)
+    func presentEmployeeScreens(token: String, userData: UserData) {
+        let vc = EmployeeTabBarController(token: token, userData: userData)
         
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }

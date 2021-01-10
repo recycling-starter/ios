@@ -48,7 +48,6 @@ class BoxInteractionServices: BoxInteractionProtocol {
         
         networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (stringData) in
             self.getBox(box: box, token: token) { (box) in
-                print(box)
                 complitionHandler(box)
             }
         }

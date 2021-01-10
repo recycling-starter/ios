@@ -48,7 +48,6 @@ class AuthServices {
         
         networkService.GETRequest(url: url, headers: headers) { (data) in
             guard let data = data else { return }
-            print(data)
             let decoder = JSONDecoder()
             let userData = try! decoder.decode(UserData.self, from: data)
             complitionHandler(userData)

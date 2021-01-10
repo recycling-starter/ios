@@ -163,7 +163,7 @@ extension AuthViewController {
         
         authService.autharisation(email: email, password: password) { (userData, token) in
             if let userData = userData{
-                self.router.presentBoxListViewController(token: token, boxList: userData.boxes)
+                self.router.presentEmployeeScreens(token: token, userData: userData)
                 self.localStorageService.saveUserInfo(email: email, password: password)
             } else {
                 self.emailField.errorSignalize()

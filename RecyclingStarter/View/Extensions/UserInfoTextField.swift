@@ -61,24 +61,3 @@ class UserInfoTextField: UIUnderlinedTextField {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-//func shake() {
-//    let shake = CASpringAnimation(keyPath: "position")
-//    shake.duration = 0.15
-//    shake.autoreverses = true
-//    shake.initialVelocity = 1.5
-//    shake.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeOut)
-//    
-//    let fromPoint = CGPoint(x: center.x - 5, y: center.y)
-//    let fromValue = NSValue(cgPoint: fromPoint)
-//    
-//    let toPoint = CGPoint(x: center.x + 5, y: center.y)
-//    let toValue = NSValue(cgPoint: toPoint)
-//    
-//    shake.fromValue = fromValue
-//    shake.toValue = toValue
-//    
-//    layer.add(shake, forKey: "position")
-//}
-

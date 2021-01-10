@@ -33,6 +33,7 @@ class EmployeeTabBarController: UITabBarController {
     
     private func setupBoxList() -> UINavigationController {
         let boxListVC = BoxListViewController(token: token, boxList: userData.boxes)
+        boxListVC.title = "Контейнеры"
         let navigation = UINavigationController(rootViewController: boxListVC)
         
         let boxImage = AppImage.boxIcon?.withRenderingMode(.alwaysTemplate)

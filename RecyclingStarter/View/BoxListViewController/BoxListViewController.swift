@@ -26,6 +26,7 @@ class BoxListViewController: UITableViewController {
     
     override func viewDidLoad() {
         tableView.register(BoxCell.self, forCellReuseIdentifier: String(describing: BoxCell.self))
+        view.backgroundColor = AppColor.background
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
