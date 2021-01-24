@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import TinyConstraints
 
-class BoxListViewController: UITableViewController {
+class BoxListViewController: UIViewController {
     
     var boxList: [BoxData]
     let router = Router()
     let token: String
+    
+    let tableView = UITableView()
     
     init(token: String, boxList: [BoxData]) {
         self.token = token
@@ -25,23 +28,60 @@ class BoxListViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        setupSubViews()
         tableView.register(BoxCell.self, forCellReuseIdentifier: String(describing: BoxCell.self))
-        view.backgroundColor = AppColor.background
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func setupSubViews() {
+        self.view.addSubview(tableView)
+        tableView.edgesToSuperview(insets: .left(24) + .right(24), usingSafeArea: true)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = AppColor.background
+        view.backgroundColor = AppColor.background
+    }
+}
+
+extension BoxListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return boxList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BoxCell.self), for: indexPath) as! BoxCell
-        let box = boxList[indexPath.row]
+        let box = boxList[indexPath.section]
         cell.configute(with: box)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let box = boxList[indexPath.row]
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? BoxCell else { return }
+        if !cell.beingAnimated {
+            cell.startProgressAnimation()
+            cell.beingAnimated = true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let box = boxList[indexPath.section]
         self.navigationController?.pushViewController(BoxManagmentViewController(token: token, boxData: box), animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension BoxListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
     }
 }

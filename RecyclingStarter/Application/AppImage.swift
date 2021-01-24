@@ -26,6 +26,8 @@ enum AppImage {
     
     static let profileIcon = UIImage(named: "profile_icon")
     
+    static let recyclingIcon = UIImage(named: "recycling_icon")
+    
     //Separated box image
     
     static let boxLow = UIImage(named: "box_low")

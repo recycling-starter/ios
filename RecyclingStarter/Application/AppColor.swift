@@ -31,10 +31,17 @@ enum AppColor {
     
     static let pickerButton = UIColor(named: "picker_button")
     
-    //MARK: Other
+    //MARK: Backgrounds
     static let authBackground = UIColor(named: "auth_background")
     
     static let background = UIColor(named: "background")
+    
+    //MARK: Navigation bar
+    static let navigationBarColor = UIColor(named: "navigation_bar_color")
+    
+    //MARK: TableView
+    static let cellBorderColor = UIColor(named: "cell_border")
+    
     
     //MARK: TextView
     

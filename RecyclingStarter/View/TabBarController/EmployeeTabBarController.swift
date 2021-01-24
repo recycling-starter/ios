@@ -19,6 +19,8 @@ class EmployeeTabBarController: UITabBarController {
         let tabBarList = [setupBoxList(), setupProfile()]
         viewControllers = tabBarList
         tabBar.tintColor = AppColor.button
+        tabBar.isTranslucent = false
+        tabBar.barTintColor = AppColor.navigationBarColor
     }
     
     init(token: String, userData: UserData) {
@@ -36,20 +38,32 @@ class EmployeeTabBarController: UITabBarController {
         boxListVC.title = "Контейнеры"
         let navigation = UINavigationController(rootViewController: boxListVC)
         
-        let boxImage = AppImage.boxIcon?.withRenderingMode(.alwaysTemplate)
+        let boxImage = AppImage.recyclingIcon?.withRenderingMode(.alwaysTemplate)
         let boxListBarItem = UITabBarItem(title: nil, image: boxImage, tag: 0)
         navigation.tabBarItem = boxListBarItem
+        navigation.navigationBar.isTranslucent = false
+        navigation.navigationBar.barTintColor = AppColor.navigationBarColor
+        navigation.navigationBar.tintColor = AppColor.button
+        navigation.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: AppFont.semibold18,
+            NSAttributedString.Key.foregroundColor: AppColor.label ?? .black
+        ]
         
         return navigation
     }
     
-    private func setupProfile() -> ProfileViewController {
-        let profileVC = ProfileViewController()
+    private func setupProfile() -> UINavigationController {
+        let profileVC = EmployeeProfileViewController(userData: userData)
+        let navigation = UINavigationController(rootViewController: profileVC)
+        profileVC.title = "Настройки"
+        navigation.navigationBar.prefersLargeTitles = true
+        navigation.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: AppFont.semibold32]
+        navigation.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: AppFont.semibold18]
         
         let profileImage = AppImage.profileIcon?.withRenderingMode(.alwaysTemplate)
         let profileBarItem = UITabBarItem(title: nil, image: profileImage, tag: 1)
-        profileVC.tabBarItem = profileBarItem
+        navigation.tabBarItem = profileBarItem
         
-        return profileVC
+        return navigation
     }
 }

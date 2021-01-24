@@ -15,7 +15,7 @@ class AuthViewController: UIViewController {
     
     private let emailField: UserInfoTextField
     private let passwordField: UserInfoTextField
-    private let enterButton: NewButton
+    private let enterButton: styledButton
     private let enterLabel: UILabel
     private let fogotPassButton: UIButton
     private let noAccountLabel: UILabel
@@ -62,12 +62,12 @@ class AuthViewController: UIViewController {
     init() {
         self.emailField = LoginTextField()
         self.passwordField = PasswordTextField()
-        self.enterButton = Self.makeButton(title: "Войти")
-        self.enterLabel = Self.makeLabel(text: "Войти в систему:")
-        self.fogotPassButton = Self.makeAdditionalButton(title: "Забыли пароль?")
-        self.noAccountLabel = Self.makeAdditionLabel(text: "Нет аккаунта?")
-        self.singInButton = Self.makeAdditionalButton(title: "Зарегистрироваться")
-        self.logoView = Self.makeLogo()
+        self.enterButton = Self.createButton(title: "Войти")
+        self.enterLabel = Self.createLabel(text: "Войти в систему:")
+        self.fogotPassButton = Self.createAdditionalButton(title: "Забыли пароль?")
+        self.noAccountLabel = Self.createAdditionLabel(text: "Нет аккаунта?")
+        self.singInButton = Self.createAdditionalButton(title: "Зарегистрироваться")
+        self.logoView = Self.createLogo()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -183,8 +183,8 @@ extension AuthViewController {
 // MARK: Setup UI elements
 extension AuthViewController {
     
-    private static func makeButton(title: String) -> NewButton{
-        let button = NewButton(type: .system)
+    private static func createButton(title: String) -> styledButton{
+        let button = styledButton(type: .system)
         let styledTitle = title.set(style: Style.mainButtonStyle)
         button.setAttributedTitle(styledTitle, for: .normal)
         button.height(50)
@@ -193,7 +193,7 @@ extension AuthViewController {
         return button
     }
     
-    private static func makeAdditionalButton(title: String) -> UIButton {
+    private static func createAdditionalButton(title: String) -> UIButton {
         let button = UIButton(type: .system)
         let styledTitle = title.set(style: Style.additionalButtonStyle)
         button.setAttributedTitle(styledTitle, for: .normal)
@@ -201,13 +201,13 @@ extension AuthViewController {
         return button
     }
     
-    private static func makeLogo() -> UIImageView{
+    private static func createLogo() -> UIImageView{
         let logo = AppImage.logo
         let imageView = UIImageView(image: logo)
         return imageView
     }
     
-    private static func makeLabel(text: String) -> UILabel {
+    private static func createLabel(text: String) -> UILabel {
         let label = UILabel()
         label.attributedText = text.set(style: Style.labelStyle)
         label.textAlignment = .left
@@ -215,7 +215,7 @@ extension AuthViewController {
         return label
     }
     
-    private static func makeAdditionLabel(text: String) -> UILabel {
+    private static func createAdditionLabel(text: String) -> UILabel {
         let label = UILabel()
         label.attributedText = text.set(style: Style.additionalLabelStyle)
         label.numberOfLines = 1
@@ -241,7 +241,7 @@ extension AuthViewController: UITextFieldDelegate {
     }
 }
 
-class NewButton: UIButton {
+class styledButton: UIButton {
     override open var isEnabled: Bool {
         didSet {
             backgroundColor = isEnabled ? AppColor.button : AppColor.buttomUnavailable

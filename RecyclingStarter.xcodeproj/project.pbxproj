@@ -12,11 +12,13 @@
 		BA01B37225A1508B007AF9AF /* BoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA01B37125A1508B007AF9AF /* BoxCell.swift */; };
 		BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF89C24DEEC9800F27395 /* Debounce.swift */; };
 		BA0AF8A124DF6ACE00F27395 /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0AF8A024DF6ACE00F27395 /* BoxData.swift */; };
+		BA38149225BCFF08004E951C /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA38149125BCFF08004E951C /* CircleProgressBarView.swift */; };
+		BA4644F025AE15C2005495EF /* TitledInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4644EF25AE15C2005495EF /* TitledInfoView.swift */; };
 		BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2802565CFFB00A11656 /* LoginTextField.swift */; };
 		BA5EF2842565D02000A11656 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2832565D02000A11656 /* PasswordTextField.swift */; };
 		BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */; };
 		BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */; };
-		BA838F3425A94057004E9428 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F3325A94057004E9428 /* ProfileViewController.swift */; };
+		BA838F3425A94057004E9428 /* EmployeeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F3325A94057004E9428 /* EmployeeProfileViewController.swift */; };
 		BA91D717259D5EC100768830 /* AppHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91D716259D5EC100768830 /* AppHost.swift */; };
 		BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */; };
 		BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B924D3607500F6E5B7 /* Router.swift */; };
@@ -59,11 +61,13 @@
 		BA01B37125A1508B007AF9AF /* BoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCell.swift; sourceTree = "<group>"; };
 		BA0AF89C24DEEC9800F27395 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		BA0AF8A024DF6ACE00F27395 /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
+		BA38149125BCFF08004E951C /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
+		BA4644EF25AE15C2005495EF /* TitledInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInfoView.swift; sourceTree = "<group>"; };
 		BA5EF2802565CFFB00A11656 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		BA5EF2832565D02000A11656 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextField.swift; sourceTree = "<group>"; };
 		BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTabBarController.swift; sourceTree = "<group>"; };
-		BA838F3325A94057004E9428 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BA838F3325A94057004E9428 /* EmployeeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileViewController.swift; sourceTree = "<group>"; };
 		BA91D716259D5EC100768830 /* AppHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHost.swift; sourceTree = "<group>"; };
 		BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		BAB8F1B924D3607500F6E5B7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -123,10 +127,27 @@
 		BA01B35425A14EC8007AF9AF /* BoxListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BA38149025BCFEEE004E951C /* views */,
 				BA01B35525A14EE2007AF9AF /* BoxListViewController.swift */,
 				BA01B37125A1508B007AF9AF /* BoxCell.swift */,
 			);
 			path = BoxListViewController;
+			sourceTree = "<group>";
+		};
+		BA38149025BCFEEE004E951C /* views */ = {
+			isa = PBXGroup;
+			children = (
+				BA38149125BCFF08004E951C /* CircleProgressBarView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		BA4644EE25AE1577005495EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA4644EF25AE15C2005495EF /* TitledInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BA5E817E25153ED9000D0B3A /* Views */ = {
@@ -149,7 +170,8 @@
 		BA838F3225A94043004E9428 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BA838F3325A94057004E9428 /* ProfileViewController.swift */,
+				BA4644EE25AE1577005495EF /* Views */,
+				BA838F3325A94057004E9428 /* EmployeeProfileViewController.swift */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -468,6 +490,7 @@
 				BAC05C6124CCBD2300EBB2AE /* AuthViewController.swift in Sources */,
 				BAB8F1D924D38A1B00F6E5B7 /* LoadScreenViewController.swift in Sources */,
 				BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */,
+				BA4644F025AE15C2005495EF /* TitledInfoView.swift in Sources */,
 				BAC05C5D24CCBA6F00EBB2AE /* RegisterViewController.swift in Sources */,
 				BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */,
 				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
@@ -489,6 +512,7 @@
 				BAB8F1D724D37BC000F6E5B7 /* UserInfo+CoreDataProperties.swift in Sources */,
 				BAC05C6324CCBD9200EBB2AE /* AppColor.swift in Sources */,
 				BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */,
+				BA38149225BCFF08004E951C /* CircleProgressBarView.swift in Sources */,
 				BAC05C6724CCE3DB00EBB2AE /* NetworkService.swift in Sources */,
 				BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */,
 				BAB8F1D624D37BC000F6E5B7 /* UserInfo+CoreDataClass.swift in Sources */,
@@ -496,7 +520,7 @@
 				BAC05C5B24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift in Sources */,
 				BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */,
 				BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */,
-				BA838F3425A94057004E9428 /* ProfileViewController.swift in Sources */,
+				BA838F3425A94057004E9428 /* EmployeeProfileViewController.swift in Sources */,
 				BA91D717259D5EC100768830 /* AppHost.swift in Sources */,
 				BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */,
 			);
