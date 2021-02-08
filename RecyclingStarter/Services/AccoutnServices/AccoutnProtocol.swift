@@ -8,9 +8,7 @@
 
 import Foundation
 
-protocol AccoutnProtocol {
-    
-    func autharisation(email: String, password: String, callback: @escaping(User?) -> Void)
+protocol AccountDataManagerProtocol {
     
     func logout(callback: @escaping()->Void)
     

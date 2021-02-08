@@ -8,10 +8,51 @@
 
 import Foundation
 
-struct User: Codable {
+struct UserToken: Codable {
     var token: String
+    var id: Int
     
     enum CodingKeys: String, CodingKey {
-        case token = "token"
+        case token
+        case id
+    }
+}
+
+struct UserData: Codable {
+    var id: Int
+    var firstName: String
+    var building: Int
+    var email: String
+    var phone: Int
+    var room: String
+    var organization: Int?
+    var boxes: [BoxData]?
+    var isActive: Bool
+    lazy var isAdmin: Bool = {
+        guard let organization = organization else { return false }
+        return true
+    }()
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case building
+        case email
+        case phone
+        case room
+        case organization
+        case boxes
+        case isActive = "is_active"
+    }
+}
+
+struct UpdateUserPasswordData: Codable {
+    var oldPassword: String?
+    var status: String?
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case oldPassword = "old_password"
+        case status
     }
 }

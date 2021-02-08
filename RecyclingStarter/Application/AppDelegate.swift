@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
         } else {
           let window = UIWindow(frame: UIScreen.main.bounds)
-            window.rootViewController = router.firstViewController() // Your initial view controller.
+          window.rootViewController = router.firstViewController() //Initial view controller.
           window.makeKeyAndVisible()
           self.window = window
         }

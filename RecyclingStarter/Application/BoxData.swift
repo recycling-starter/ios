@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Box: Codable {
-    var filling: Int
+struct BoxData: Codable {
     var id: Int
-    var result: String
+    var fullness: Int
+    var room: String
 }

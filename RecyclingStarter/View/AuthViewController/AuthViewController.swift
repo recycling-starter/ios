@@ -13,8 +13,8 @@ import Alamofire
 
 class AuthViewController: UIViewController {
     
-    private let emailField: UIUnderlinedTextField
-    private let passwordField: UIUnderlinedTextField
+    private let emailField: UserInfoTextField
+    private let passwordField: UserInfoTextField
     private let enterButton: UIButton
     private let enterLabel: UILabel
     private let fogotPassButton: UIButton
@@ -22,8 +22,8 @@ class AuthViewController: UIViewController {
     private let singInButton: UIButton
     private let logoView: UIImageView
     
-    private let authService = AuthServices()
-    private let LocalStorageService = LocalStorageServices()
+    private let authService = UserServices()
+    private let localStorageService = LocalStorageServices()
     private let router = Router()
     
     
@@ -59,21 +59,15 @@ class AuthViewController: UIViewController {
         }
     }
     
-    private enum FieldType{
-        case email
-        
-        case password
-    }
-    
     init() {
-        self.emailField = Self.makeTextField(type: .email)
-        self.passwordField = Self.makeTextField(type: .password)
-        self.enterButton = Self.makeButton(title: "Войти")
-        self.enterLabel = Self.makeLabel(text: "Войти в систему:")
-        self.fogotPassButton = Self.makeAdditionalButton(title: "Забыли пароль?")
-        self.noAccountLabel = Self.makeAdditionLabel(text: "Нет аккаунта?")
-        self.singInButton = Self.makeAdditionalButton(title: "Зарегистрироваться")
-        self.logoView = Self.makeLogo()
+        self.emailField = LoginTextField()
+        self.passwordField = PasswordTextField()
+        self.enterButton = Self.createButton(title: "Войти")
+        self.enterLabel = Self.createLabel(text: "Войти в систему:")
+        self.fogotPassButton = Self.createAdditionalButton(title: "Забыли пароль?")
+        self.noAccountLabel = Self.createAdditionLabel(text: "Нет аккаунта?")
+        self.singInButton = Self.createAdditionalButton(title: "Зарегистрироваться")
+        self.logoView = Self.createLogo()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -119,7 +113,7 @@ class AuthViewController: UIViewController {
         enterLabel.trailingToSuperview(offset: 0, relation: .equalOrGreater)
         
         emailField.topToBottom(of: enterLabel, offset: 30)
-        emailField.centerXToSuperview()
+        emailField.widthToSuperview()
         
         passwordField.topToBottom(of: emailField, offset: 35)
         passwordField.widthToSuperview()
@@ -161,18 +155,21 @@ class AuthViewController: UIViewController {
 // MARK: Button actions
 extension AuthViewController {
     @objc func authRequest() {
+        enterButton.isEnabled = false
         guard let email = emailField.text, let password = passwordField.text else {
+            enterButton.isEnabled = true
             return
         }
-        authService.autharisation(email: email, password: password) { (user) in
-            if let user = user{
-                self.router.presentEmployeeVC(user: user)
-                self.LocalStorageService.saveUserInfo(email: email, password: password)
+        
+        authService.autharisation(email: email, password: password) { (userData, token) in
+            if let userData = userData{
+                self.router.presentEmployeeScreens(token: token, userData: userData)
+                self.localStorageService.saveUserInfo(email: email, password: password)
             } else {
-                self.setFieldsColor(isError: true)
-                self.emailField.shake()
-                self.passwordField.shake()
+                self.emailField.errorSignalize()
+                self.passwordField.errorSignalize()
             }
+            self.enterButton.isEnabled = true
         }
     }
     
@@ -185,40 +182,22 @@ extension AuthViewController {
 
 // MARK: Setup UI elements
 extension AuthViewController {
-    private static func makeTextField(type: FieldType) -> UIUnderlinedTextField{
-        let textField = UIUnderlinedTextField()
-        textField.style = Style.textStyle
-        textField.font = Style.textStyle.font?.font(size: Style.textStyle.size)
-        textField.textColor = Style.textStyle.color?.color
-        textField.textAlignment = .left
-        textField.tintColor = AppColor.placeholder
-        textField.width(UIScreen.main.bounds.width - 100)
-        var placeholder = ""
-        
-        switch type {
-        case .email:
-            placeholder = "e-mail"
-            textField.keyboardType = .emailAddress
-        case .password:
-            placeholder = "password"
-            textField.isSecureTextEntry = true
-        }
-        textField.attributedPlaceholder = placeholder.set(style: Style.placeholderStyle)
-        
-        return textField
-    }
     
-    private static func makeButton(title: String) -> UIButton{
+    private static func createButton(title: String) -> UIButton{
         let button = UIButton(type: .system)
         let styledTitle = title.set(style: Style.mainButtonStyle)
         button.setAttributedTitle(styledTitle, for: .normal)
         button.height(50)
+        button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        button.backgroundColor = AppColor.button
+        button.setBackgroundImage(AppImage.buttonMain, for: .normal)
+        button.setBackgroundImage(AppImage.buttonMain?.alpha(0.8), for: .highlighted)
+        button.setBackgroundImage(AppImage.buttonMain?.alpha(0.8), for: .selected)
+        button.setBackgroundImage(AppImage.buttonMain?.alpha(0.8), for: .disabled)
         return button
     }
     
-    private static func makeAdditionalButton(title: String) -> UIButton {
+    private static func createAdditionalButton(title: String) -> UIButton {
         let button = UIButton(type: .system)
         let styledTitle = title.set(style: Style.additionalButtonStyle)
         button.setAttributedTitle(styledTitle, for: .normal)
@@ -226,13 +205,13 @@ extension AuthViewController {
         return button
     }
     
-    private static func makeLogo() -> UIImageView{
+    private static func createLogo() -> UIImageView{
         let logo = AppImage.logo
         let imageView = UIImageView(image: logo)
         return imageView
     }
     
-    private static func makeLabel(text: String) -> UILabel {
+    private static func createLabel(text: String) -> UILabel {
         let label = UILabel()
         label.attributedText = text.set(style: Style.labelStyle)
         label.textAlignment = .left
@@ -240,26 +219,13 @@ extension AuthViewController {
         return label
     }
     
-    private static func makeAdditionLabel(text: String) -> UILabel {
+    private static func createAdditionLabel(text: String) -> UILabel {
         let label = UILabel()
         label.attributedText = text.set(style: Style.additionalLabelStyle)
         label.numberOfLines = 1
         return label
     }
     
-    private func setFieldsColor(isError: Bool) {
-        if isError {
-            emailField.tintColor = AppColor.error
-            emailField.textColor = AppColor.error
-            passwordField.tintColor = AppColor.error
-            passwordField.textColor = AppColor.error
-        } else {
-            emailField.tintColor = AppColor.placeholder
-            emailField.textColor = AppColor.label
-            passwordField.tintColor = AppColor.placeholder
-            passwordField.textColor = AppColor.label
-        }
-    }
 }
 
 //MARK: UITextFieldDelegate
@@ -268,14 +234,13 @@ extension AuthViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.3) {
-            self.setFieldsColor(isError: false)
-        }
+        self.emailField.cleanErrorSignalize()
+        self.passwordField.cleanErrorSignalize()
     }
 }

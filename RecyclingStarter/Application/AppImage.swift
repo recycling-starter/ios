@@ -18,6 +18,21 @@ enum AppImage {
     
     static let logoutImage = UIImage(named: "logout")
     
+    static let emailIconImage = UIImage(named: "email_icon")
+    
+    static let passwordIconImage = UIImage(named: "password_icon")
+    
+    static let boxIcon = UIImage(named: "box_icon")
+    
+    static let profileIcon = UIImage(named: "profile_icon")
+    
+    static let recyclingIcon = UIImage(named: "recycling_icon")
+    
+    //Buttons color
+    static let buttonMain = UIImage(named: "button_main_color")
+    
+    static let errorColor = UIImage(named: "error_color")
+    
     //Separated box image
     
     static let boxLow = UIImage(named: "box_low")

@@ -10,50 +10,50 @@ import Foundation
 
 class BoxInteractionServices: BoxInteractionProtocol {
     
-    let hostUrl = "https://oreldaniil.pythonanywhere.com"
     let networkService = NetworkService()
     
-    func getBox(user: User, callback: @escaping (Box?) -> Void) {
-        let url = hostUrl + "/boxes/get"
+    func getBox(box: BoxData, token: String, complitionHandler: @escaping(BoxData?) -> Void) {
+        let url = AppHost.hostURL + "/v1/boxes/\(box.id)"
         
-        let headers: [String: String] = ["Content-Type": "application/json"]
+        let headers: [String: String] = [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer \(token)"
+        ]
         
-        let params = ["token": user.token]
-        
-        networkService.POSTrequest(url: url, params: params, headers: headers) { (stringData) in
-            if let data = stringData?.data(using: .utf8) {
-                let decoder = JSONDecoder()
-                do {
-                    let box = try decoder.decode(Box.self, from: data)
-                    callback(box)
-                    return
-                } catch { }
-            }
-            callback(nil)
+        networkService.GETRequest(url: url, headers: headers) { (data) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            do {
+                let box = try decoder.decode(BoxData.self, from: data)
+                complitionHandler(box)
+                return
+            } catch { }
+            
+            complitionHandler(nil)
         }
     }
     
-    func fillBox(user: User, box: Box, filling: Int, callback: @escaping (Box?) -> Void) {
-        let url = hostUrl + "/boxes/fill"
+    func fillBox(token: String, box: BoxData, isAdmin: Bool, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void) {
         
-        let headers: [String: String] = ["Content-Type": "application/json"]
+        let url = AppHost.hostURL + "/v1/boxes/\(box.id)"
         
-        let params: [String: Any] = [
-            "token": user.token,
-            "id": box.id,
-            "filling": filling
+        let headers: [String: String] = [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer \(token)"
         ]
         
-        networkService.POSTrequest(url: url, params: params, headers: headers) { (stringData) in
-            if let data = stringData?.data(using: .utf8) {
-                let decoder = JSONDecoder()
-                do {
-                    let box = try decoder.decode(Box.self, from: data)
-                    callback(box)
-                    return
-                } catch { }
+        let params: [String: Any] = [
+            "fullness": fullness,
+            "room": box.room
+        ]
+        
+        networkService.POSTRequest(url: url,
+                                   params: params,
+                                   headers: headers,
+                                   httpMethod: isAdmin ? .put : .patch) { (stringData) in
+            self.getBox(box: box, token: token) { (box) in
+                complitionHandler(box)
             }
-            callback(nil)
         }
     }
 }
