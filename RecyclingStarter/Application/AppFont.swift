@@ -28,6 +28,7 @@ enum AppFont {
     
     // MARK: - Regular
     static let regular17 = regular(size: 17)
+    static let regular14 = regular(size: 14)
     static let regular12 = regular(size: 12)
     static let regular10 = regular(size: 10)
     

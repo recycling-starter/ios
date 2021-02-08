@@ -34,7 +34,7 @@ class EmployeeTabBarController: UITabBarController {
     }
     
     private func setupBoxList() -> UINavigationController {
-        let boxListVC = BoxListViewController(token: token, boxList: userData.boxes)
+        let boxListVC = BoxListViewController(token: token, userData: userData)
         boxListVC.title = "Контейнеры"
         let navigation = UINavigationController(rootViewController: boxListVC)
         
@@ -53,7 +53,7 @@ class EmployeeTabBarController: UITabBarController {
     }
     
     private func setupProfile() -> UINavigationController {
-        let profileVC = EmployeeProfileViewController(userData: userData)
+        let profileVC = EmployeeProfileViewController(userData: userData, token: token)
         let navigation = UINavigationController(rootViewController: profileVC)
         profileVC.title = "Настройки"
         navigation.navigationBar.prefersLargeTitles = true

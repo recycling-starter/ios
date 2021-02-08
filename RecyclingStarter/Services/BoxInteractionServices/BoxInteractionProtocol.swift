@@ -10,6 +10,6 @@ protocol BoxInteractionProtocol {
     
     func getBox(box: BoxData, token: String, complitionHandler: @escaping(BoxData?) -> Void)
     
-    func fillBox(token: String, box: BoxData, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void)
+    func fillBox(token: String, box: BoxData, isAdmin: Bool, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void)
     
 }

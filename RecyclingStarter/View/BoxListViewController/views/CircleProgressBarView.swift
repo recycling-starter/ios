@@ -34,7 +34,7 @@ class CircleProgressBarView: UIView {
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineCap = .round
         circleLayer.lineWidth = lineWidth
-        circleLayer.strokeColor = UIColor.black.cgColor
+        circleLayer.strokeColor = AppColor.progressBarTrack?.cgColor
         
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
@@ -75,25 +75,25 @@ class CircleProgressBarView: UIView {
     }
     
     private func colorSet(progress: Int) -> [CGColor?] {
-        var colorSet = [AppColor.boxState0Up?.cgColor]
+        var colorSet = [AppColor.boxState20Up?.cgColor]
         switch progress {
         case 11...25:
-            colorSet = [AppColor.boxState0Up?.cgColor,
-                        AppColor.boxState25Up?.cgColor]
+            colorSet = [AppColor.boxState20Up?.cgColor,
+                        AppColor.boxState40Up?.cgColor]
         case 25...50:
-            colorSet = [AppColor.boxState0Up?.cgColor,
-                        AppColor.boxState25Up?.cgColor,
-                        AppColor.boxState50Up?.cgColor]
+            colorSet = [AppColor.boxState20Up?.cgColor,
+                        AppColor.boxState40Up?.cgColor,
+                        AppColor.boxState60Up?.cgColor]
         case 51...75:
-            colorSet = [AppColor.boxState0Up?.cgColor,
-                        AppColor.boxState25Up?.cgColor,
-                        AppColor.boxState50Up?.cgColor,
-                        AppColor.boxState75Up?.cgColor]
+            colorSet = [AppColor.boxState20Up?.cgColor,
+                        AppColor.boxState40Up?.cgColor,
+                        AppColor.boxState60Up?.cgColor,
+                        AppColor.boxState80Up?.cgColor]
         case 76...100:
-            colorSet = [AppColor.boxState0Up?.cgColor,
-                        AppColor.boxState25Up?.cgColor,
-                        AppColor.boxState50Up?.cgColor,
-                        AppColor.boxState75Up?.cgColor,
+            colorSet = [AppColor.boxState20Up?.cgColor,
+                        AppColor.boxState40Up?.cgColor,
+                        AppColor.boxState60Up?.cgColor,
+                        AppColor.boxState80Up?.cgColor,
                         AppColor.boxState100Up?.cgColor]
         default:
             break

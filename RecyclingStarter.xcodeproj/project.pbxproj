@@ -43,7 +43,7 @@
 		BAC05C6124CCBD2300EBB2AE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6024CCBD2300EBB2AE /* AuthViewController.swift */; };
 		BAC05C6324CCBD9200EBB2AE /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6224CCBD9200EBB2AE /* AppColor.swift */; };
 		BAC05C6724CCE3DB00EBB2AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6624CCE3DB00EBB2AE /* NetworkService.swift */; };
-		BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */; };
+		BAC05C6924CCE62C00EBB2AE /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6824CCE62C00EBB2AE /* UserServices.swift */; };
 		BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */; };
 		BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018824E36D54004AC43E /* UILabelExtension.swift */; };
 		BADB018D24E6C5EB004AC43E /* AccountDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018C24E6C5EB004AC43E /* AccountDataManager.swift */; };
@@ -51,6 +51,7 @@
 		BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019024E6C646004AC43E /* BoxInteractionServices.swift */; };
 		BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */; };
 		BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */; };
+		BAF2B9FC25C8CDC50009200A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF2B9FB25C8CDC50009200A /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +95,7 @@
 		BAC05C6024CCBD2300EBB2AE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		BAC05C6224CCBD9200EBB2AE /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		BAC05C6624CCE3DB00EBB2AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		BAC05C6824CCE62C00EBB2AE /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boxManagmentViewController.swift; sourceTree = "<group>"; };
 		BADB018824E36D54004AC43E /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		BADB018C24E6C5EB004AC43E /* AccountDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataManager.swift; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 		BADB019024E6C646004AC43E /* BoxInteractionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionServices.swift; sourceTree = "<group>"; };
 		BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionProtocol.swift; sourceTree = "<group>"; };
 		BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
+		BAF2B9FB25C8CDC50009200A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +267,7 @@
 				BADB018B24E6C5CB004AC43E /* BoxInteractionServices */,
 				BADB018A24E6C590004AC43E /* AccoutnServices */,
 				BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */,
-				BAC05C6524CCE35B00EBB2AE /* AuthServices */,
+				BAC05C6524CCE35B00EBB2AE /* UserServices */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -320,6 +322,7 @@
 				BAC05C5A24CCBA5A00EBB2AE /* UIUnderlinedTextField.swift */,
 				BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */,
 				BADB018824E36D54004AC43E /* UILabelExtension.swift */,
+				BAF2B9FB25C8CDC50009200A /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,12 +336,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		BAC05C6524CCE35B00EBB2AE /* AuthServices */ = {
+		BAC05C6524CCE35B00EBB2AE /* UserServices */ = {
 			isa = PBXGroup;
 			children = (
-				BAC05C6824CCE62C00EBB2AE /* AuthServices.swift */,
+				BAC05C6824CCE62C00EBB2AE /* UserServices.swift */,
 			);
-			path = AuthServices;
+			path = UserServices;
 			sourceTree = "<group>";
 		};
 		BAC05C6A24CE2ACD00EBB2AE /* LocationData */ = {
@@ -499,6 +502,7 @@
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
 				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
 				BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */,
+				BAF2B9FC25C8CDC50009200A /* UIImageExtension.swift in Sources */,
 				BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */,
 				BADB018D24E6C5EB004AC43E /* AccountDataManager.swift in Sources */,
 				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
@@ -511,7 +515,7 @@
 				BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */,
 				BAB8F1D724D37BC000F6E5B7 /* UserInfo+CoreDataProperties.swift in Sources */,
 				BAC05C6324CCBD9200EBB2AE /* AppColor.swift in Sources */,
-				BAC05C6924CCE62C00EBB2AE /* AuthServices.swift in Sources */,
+				BAC05C6924CCE62C00EBB2AE /* UserServices.swift in Sources */,
 				BA38149225BCFF08004E951C /* CircleProgressBarView.swift in Sources */,
 				BAC05C6724CCE3DB00EBB2AE /* NetworkService.swift in Sources */,
 				BA0AF89D24DEEC9800F27395 /* Debounce.swift in Sources */,

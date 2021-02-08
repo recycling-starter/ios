@@ -26,7 +26,7 @@ struct UserData: Codable {
     var phone: Int
     var room: String
     var organization: Int?
-    var boxes: [BoxData]
+    var boxes: [BoxData]?
     var isActive: Bool
     lazy var isAdmin: Bool = {
         guard let organization = organization else { return false }
@@ -43,5 +43,16 @@ struct UserData: Codable {
         case organization
         case boxes
         case isActive = "is_active"
+    }
+}
+
+struct UpdateUserPasswordData: Codable {
+    var oldPassword: String?
+    var status: String?
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case oldPassword = "old_password"
+        case status
     }
 }

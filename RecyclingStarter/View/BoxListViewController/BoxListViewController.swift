@@ -12,14 +12,16 @@ import TinyConstraints
 class BoxListViewController: UIViewController {
     
     var boxList: [BoxData]
+    var userData: UserData
     let router = Router()
     let token: String
     
     let tableView = UITableView()
     
-    init(token: String, boxList: [BoxData]) {
+    init(token: String, userData: UserData) {
         self.token = token
-        self.boxList = boxList
+        self.boxList = userData.boxes ?? []
+        self.userData = userData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -69,7 +71,9 @@ extension BoxListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let box = boxList[indexPath.section]
-        self.navigationController?.pushViewController(BoxManagmentViewController(token: token, boxData: box), animated: true)
+        print(indexPath.section)
+        print(box)
+        self.navigationController?.pushViewController(BoxManagmentViewController(token: token, boxData: box, isAdmin: userData.isAdmin), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

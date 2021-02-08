@@ -13,7 +13,7 @@ class Router {
     
     private let localStorageService = LocalStorageServices()
     
-    private let authService = AuthServices()
+    private let authService = UserServices()
     
     func firstViewController() -> UIViewController{
         let loadVC = LoadScreenViewController()

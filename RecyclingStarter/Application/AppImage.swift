@@ -28,6 +28,11 @@ enum AppImage {
     
     static let recyclingIcon = UIImage(named: "recycling_icon")
     
+    //Buttons color
+    static let buttonMain = UIImage(named: "button_main_color")
+    
+    static let errorColor = UIImage(named: "error_color")
+    
     //Separated box image
     
     static let boxLow = UIImage(named: "box_low")

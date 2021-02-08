@@ -17,8 +17,7 @@ class TitledInfoView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupLayout()
-        setupTitle()
+        setupViews()
     }
     
     private enum Style {
@@ -39,9 +38,11 @@ class TitledInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
-        self.addSubview(titleLabel)
+    private func setupViews() {
         self.addSubview(textField)
+        self.addSubview(titleLabel)
+        
+        titleLabel.font = AppFont.regular14
         
         titleLabel.topToSuperview()
         titleLabel.leadingToSuperview()
@@ -52,10 +53,5 @@ class TitledInfoView: UIView {
         textField.bottomToSuperview()
         
         self.height(50)
-    }
-    
-    func setupTitle() {
-        titleLabel.height(12, priority: LayoutPriority(rawValue: 1))
-        titleLabel.font = AppFont.regular10
     }
 }

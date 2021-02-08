@@ -42,11 +42,6 @@ enum AppColor {
     //MARK: TableView
     static let cellBorderColor = UIColor(named: "cell_border")
     
-    
-    //MARK: TextView
-    
-    // MARK: Page indicators
-    
     // MARK: Progress bar
     
     static let progressBarProgress = UIColor(named: "progress_bar_progress")
@@ -54,21 +49,21 @@ enum AppColor {
     static let progressBarTrack = UIColor(named: "progress_bar_track")
     
     //MARK: Box gradien background
-    static let boxState0Up = UIColor(named: "box_gradient_background_0_up")
+    static let boxState20Up = UIColor(named: "box_gradient_background_0_up")
     
-    static let boxState0Down = UIColor(named: "box_gradient_background_0_down")
+    static let boxState20Down = UIColor(named: "box_gradient_background_0_down")
     
-    static let boxState25Up = UIColor(named: "box_gradient_background_25_up")
+    static let boxState40Up = UIColor(named: "box_gradient_background_25_up")
     
-    static let boxState25Down = UIColor(named: "box_gradient_background_25_down")
+    static let boxState40Down = UIColor(named: "box_gradient_background_25_down")
     
-    static let boxState50Up = UIColor(named: "box_gradient_background_50_up")
+    static let boxState60Up = UIColor(named: "box_gradient_background_50_up")
     
-    static let boxState50Down = UIColor(named: "box_gradient_background_50_down")
+    static let boxState60Down = UIColor(named: "box_gradient_background_50_down")
     
-    static let boxState75Up = UIColor(named: "box_gradient_background_75_up")
+    static let boxState80Up = UIColor(named: "box_gradient_background_75_up")
     
-    static let boxState75Down = UIColor(named: "box_gradient_background_75_down")
+    static let boxState80Down = UIColor(named: "box_gradient_background_75_down")
     
     static let boxState100Up = UIColor(named: "box_gradient_background_100_up")
     

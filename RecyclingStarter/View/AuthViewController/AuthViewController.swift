@@ -15,14 +15,14 @@ class AuthViewController: UIViewController {
     
     private let emailField: UserInfoTextField
     private let passwordField: UserInfoTextField
-    private let enterButton: styledButton
+    private let enterButton: UIButton
     private let enterLabel: UILabel
     private let fogotPassButton: UIButton
     private let noAccountLabel: UILabel
     private let singInButton: UIButton
     private let logoView: UIImageView
     
-    private let authService = AuthServices()
+    private let authService = UserServices()
     private let localStorageService = LocalStorageServices()
     private let router = Router()
     
@@ -183,13 +183,17 @@ extension AuthViewController {
 // MARK: Setup UI elements
 extension AuthViewController {
     
-    private static func createButton(title: String) -> styledButton{
-        let button = styledButton(type: .system)
+    private static func createButton(title: String) -> UIButton{
+        let button = UIButton(type: .system)
         let styledTitle = title.set(style: Style.mainButtonStyle)
         button.setAttributedTitle(styledTitle, for: .normal)
         button.height(50)
+        button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        button.backgroundColor = AppColor.button
+        button.setBackgroundImage(AppImage.buttonMain, for: .normal)
+        button.setBackgroundImage(AppImage.buttonMain?.alpha(0.8), for: .highlighted)
+        button.setBackgroundImage(AppImage.buttonMain?.alpha(0.8), for: .selected)
+        button.setBackgroundImage(AppImage.buttonMain?.alpha(0.8), for: .disabled)
         return button
     }
     
@@ -238,13 +242,5 @@ extension AuthViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.emailField.cleanErrorSignalize()
         self.passwordField.cleanErrorSignalize()
-    }
-}
-
-class styledButton: UIButton {
-    override open var isEnabled: Bool {
-        didSet {
-            backgroundColor = isEnabled ? AppColor.button : AppColor.buttomUnavailable
-        }
     }
 }

@@ -33,7 +33,7 @@ class BoxInteractionServices: BoxInteractionProtocol {
         }
     }
     
-    func fillBox(token: String, box: BoxData, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void) {
+    func fillBox(token: String, box: BoxData, isAdmin: Bool, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void) {
         
         let url = AppHost.hostURL + "/v1/boxes/\(box.id)"
         
@@ -43,10 +43,14 @@ class BoxInteractionServices: BoxInteractionProtocol {
         ]
         
         let params: [String: Any] = [
-            "fullness": fullness
+            "fullness": fullness,
+            "room": box.room
         ]
         
-        networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (stringData) in
+        networkService.POSTRequest(url: url,
+                                   params: params,
+                                   headers: headers,
+                                   httpMethod: isAdmin ? .put : .patch) { (stringData) in
             self.getBox(box: box, token: token) { (box) in
                 complitionHandler(box)
             }

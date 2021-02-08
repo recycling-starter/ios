@@ -72,9 +72,9 @@ class BoxCell: UITableViewCell {
     
     func configute(with boxData: BoxData) {
         fullnes = boxData.fullness
-        idLabel.attributedText = "Box \(boxData.id)".set(style: Style.textStyle)
+        idLabel.attributedText = "Контейнер \(boxData.id)".set(style: Style.textStyle)
         fullnessLabel.attributedText = "\(fullnes)%".set(style: Style.percentStyle)
-        roomLabel.attributedText = "In room \(boxData.room)".set(style: Style.textStyle)
+        roomLabel.attributedText = "Кабинет \(boxData.room)".set(style: Style.textStyle)
     }
     
     func startProgressAnimation() {
