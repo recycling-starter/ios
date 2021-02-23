@@ -23,7 +23,6 @@ class AuthViewController: UIViewController {
     private let logoView: UIImageView
     
     private let authService = UserServices()
-    private let localStorageService = LocalStorageServices()
     private let router = Router()
     
     
@@ -164,7 +163,6 @@ extension AuthViewController {
         authService.autharisation(email: email, password: password) { (userData, token) in
             if let userData = userData{
                 self.router.presentEmployeeScreens(token: token, userData: userData)
-                self.localStorageService.saveUserInfo(email: email, password: password)
             } else {
                 self.emailField.errorSignalize()
                 self.passwordField.errorSignalize()

@@ -25,7 +25,7 @@ class UserServices {
         
         let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded"]
         
-        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .post) { (data) in
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .post) { (data, _) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
@@ -83,7 +83,7 @@ class UserServices {
             params["room"] = room.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         
-        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .put) { (data) in
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .put) { (data, _) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             let userData = try? decoder.decode(UserData.self, from: data)
@@ -106,11 +106,15 @@ class UserServices {
         let params: [String: Any] = ["old_password": oldPassword.trimmingCharacters(in: .whitespacesAndNewlines),
                                      "new_password": newPassword.trimmingCharacters(in: .whitespacesAndNewlines)]
         
-        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (data) in
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (data, _) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             let userPasswordData = try? decoder.decode(UpdateUserPasswordData.self, from: data)
             complition(userPasswordData)
         }
+    }
+    
+    func logoutUser() {
+        keychainService.clearKeychain()
     }
 }

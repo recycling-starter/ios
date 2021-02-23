@@ -176,16 +176,16 @@ class RegisterViewController: UIViewController {
                 }
                 alert.view.tintColor = AppColor.button
                 alert.addAction(okAction)
-                regButton.isEnabled = true
-                present(alert, animated: true)
+                self.regButton.isEnabled = true
+                self.present(alert, animated: true)
                 return
             } else {
                 let alert = UIAlertController(title: "Ошибка", message: "Во время регистрации произошла ошибка", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "ок", style: .default)
                 alert.view.tintColor = AppColor.button
                 alert.addAction(okAction)
-                regButton.isEnabled = true
-                present(alert, animated: true)
+                self.regButton.isEnabled = true
+                self.present(alert, animated: true)
                 return
             }
         }

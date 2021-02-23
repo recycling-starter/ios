@@ -20,8 +20,11 @@ class KeychainService {
         }
         
         set {
-            guard let newValue = newValue else { return }
             keychain["token"] = newValue
         }
+    }
+    
+    func clearKeychain() {
+        token = nil
     }
 }

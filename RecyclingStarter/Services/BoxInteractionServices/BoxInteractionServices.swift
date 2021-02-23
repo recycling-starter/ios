@@ -58,7 +58,7 @@ class BoxInteractionServices {
         networkService.paramsRequest(url: url,
                                    params: params,
                                    headers: headers,
-                                   httpMethod: isAdmin ? .put : .patch) { (stringData) in
+                                   httpMethod: isAdmin ? .put : .patch) { (stringData, _)  in
             self.getBox(box: box) { (box) in
                 complition(box)
             }

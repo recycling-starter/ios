@@ -27,7 +27,6 @@ class EmployeeProfileViewController: UIViewController {
     private lazy var logoutButton = Self.createLogoutButton(title: "Выйти")
     private var bottomScrollViewConstraint: Constraint? = nil
     
-    let accountService = LocalStorageServices()
     let userService = UserServices()
     let router = Router()
     let token: String
@@ -137,11 +136,8 @@ extension EmployeeProfileViewController {
     }
     
     @objc private func logout() {
-        accountService.logoutUser {
-            DispatchQueue.main.async { [weak self] in
-                self?.router.presentAuthVC()
-            }
-        }
+        userService.logoutUser()
+        router.presentAuthVC()
     }
     
     @objc private func changeUserInfo() {
@@ -186,7 +182,6 @@ extension EmployeeProfileViewController {
         
         userService.updateUserPassword(oldPassword: oldPass, newPassword: newPass) { (passData) in
             if let _ = passData?.status {
-                self.accountService.saveUserInfo(email: self.userData.email, password: newPass)
                 let alert = UIAlertController(title: "Успешно", message: "Пароль изменен", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Oк", style: .default)
                 alert.view.tintColor = AppColor.button

@@ -40,8 +40,28 @@ class RegistrationService {
         return true
     }
     
-    func registerNewUser(name: String?, email: String?, phone: String?, pass: String?, building: Int?, room: String?, complition: (Bool) -> Void) {
-        complition(false)
+    func registerNewUser(name: String?, email: String?, phone: String?, pass: String?, building: Int?, room: String?, complition: @escaping(Bool) -> Void) {
+        
+        let params: [String: Any] = [
+            "first_name": name ?? "",
+            "email": email ?? "",
+            "phone": phone ?? "",
+            "password": pass ?? "",
+            "building": building ?? 0,
+            "room": room ?? ""
+        ]
+        
+        let url = AppHost.hostURL + "/v1/users/"
+        
+        let headers: [String: String] = [ "Content-Type": "application/x-www-form-urlencoded"]
+        
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .post) { (_, code) in
+            if let _ = code {
+                complition(false)
+            } else {
+                complition(true)
+            }
+        }
     }
     
     func getBuildingsList(complition: @escaping([String]) -> Void) {
