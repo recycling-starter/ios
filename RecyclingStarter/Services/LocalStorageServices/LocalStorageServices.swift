@@ -9,12 +9,15 @@
 import Foundation
 
 class LocalStorageServices {
+    
     private var coreDataService = CoreDataManager()
     
     func saveUserInfo(email: String, password: String) {
         coreDataService.saveData(email: email, password: password) { (result) in
             if result == .success {
+                print("Success save user info \(email) \(password)")
             } else {
+                print("Error while saving user info")
             }
         }
     }

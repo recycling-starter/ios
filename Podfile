@@ -8,6 +8,7 @@ target 'RecyclingStarter' do
   pod 'Alamofire'
   pod 'TinyConstraints'
   pod 'SwiftRichString'
+  pod 'KeychainAccess'
 
   # Pods for RecyclingStarter
 

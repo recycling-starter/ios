@@ -105,7 +105,7 @@ class AuthViewController: UIViewController {
         contentContainer.addSubview(fogotPassButton)
         
         mainContainer.addSubview(contentContainer)
-        contentContainer.centerYToSuperview()
+        contentContainer.centerInSuperview()
         contentContainer.widthToSuperview()
         
         enterLabel.topToSuperview()

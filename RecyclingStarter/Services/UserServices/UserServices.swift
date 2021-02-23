@@ -11,6 +11,7 @@ import Foundation
 class UserServices {
     
     let networkService = NetworkService()
+    let keychainService = KeychainService()
     
     func autharisation(email: String, password: String, complitionHandler: @escaping(UserData?, String) -> Void) {
         
@@ -29,7 +30,8 @@ class UserServices {
             let decoder = JSONDecoder()
             do {
                 let userToken = try decoder.decode(UserToken.self, from: data)
-                self.getUserData(userToken: userToken) { (userData) in
+                self.keychainService.token = userToken.token
+                self.getUserData { (userData) in
                     complitionHandler(userData, userToken.token)
                 }
                 return
@@ -39,17 +41,21 @@ class UserServices {
         }
     }
     
-    private func getUserData(userToken: UserToken, complitionHandler: @escaping(UserData?) -> Void) {
-        let path = "/v1/users/\(userToken.id)"
+    private func getUserData(complition: @escaping(UserData?) -> Void) {
+        guard let token = keychainService.token else {
+            complition(nil)
+            return
+        }
+        let path = "/v1/users/\(token)"
         let url = AppHost.hostURL + path
         
-        let headers: [String: String] = ["Authorization": "Bearer \(userToken.token)"]
+        let headers: [String: String] = ["Authorization": "Bearer \(token)"]
         
         networkService.GETRequest(url: url, headers: headers) { (data) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             let userData = try? decoder.decode(UserData.self, from: data)
-            complitionHandler(userData)
+            complition(userData)
         }
     }
     
