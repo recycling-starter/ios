@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class NetworkService {
-    func POSTRequest(url: String, params: [String: Any], headers: [String: String], httpMethod: HTTPMethod, completionHandler: @escaping(Data?) -> Void) {
+    func paramsRequest(url: String, params: [String: Any], headers: [String: String], httpMethod: HTTPMethod, completionHandler: @escaping(Data?) -> Void) {
         
         let httpHeaders: HTTPHeaders = HTTPHeaders(headers)
         

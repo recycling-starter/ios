@@ -50,7 +50,6 @@
 		BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */; };
 		BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB018824E36D54004AC43E /* UILabelExtension.swift */; };
 		BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019024E6C646004AC43E /* BoxInteractionServices.swift */; };
-		BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */; };
 		BAF260D624D78A1C001FF381 /* UIWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */; };
 		BAF2B9FC25C8CDC50009200A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF2B9FB25C8CDC50009200A /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
@@ -103,7 +102,6 @@
 		BAC05C6C24CE2C5400EBB2AE /* boxManagmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boxManagmentViewController.swift; sourceTree = "<group>"; };
 		BADB018824E36D54004AC43E /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		BADB019024E6C646004AC43E /* BoxInteractionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionServices.swift; sourceTree = "<group>"; };
-		BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInteractionProtocol.swift; sourceTree = "<group>"; };
 		BAF260D524D78A1C001FF381 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
 		BAF2B9FB25C8CDC50009200A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -386,7 +384,6 @@
 			isa = PBXGroup;
 			children = (
 				BADB019024E6C646004AC43E /* BoxInteractionServices.swift */,
-				BADB019224E6C653004AC43E /* BoxInteractionProtocol.swift */,
 			);
 			path = BoxInteractionServices;
 			sourceTree = "<group>";
@@ -509,7 +506,6 @@
 				BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */,
 				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
 				BAB8F1D124D36B8200F6E5B7 /* LocalStorageServices.swift in Sources */,
-				BADB019324E6C653004AC43E /* BoxInteractionProtocol.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
 				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
 				BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */,

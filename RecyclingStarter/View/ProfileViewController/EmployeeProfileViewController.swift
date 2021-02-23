@@ -153,7 +153,7 @@ extension EmployeeProfileViewController {
         let name = nameInfoView.textField.text
         let photeString = phoneInfoView.textField.text
         let room = roomInfoView.textField.text
-        userService.updateUserData(token: token, firstName: name, phone: photeString, room: room) { (newUserData) in
+        userService.updateUserData(firstName: name, phone: photeString, room: room) { (newUserData) in
             if let newUserData = newUserData {
                 let alert = UIAlertController(title: "Успешно", message: "Данные изменены", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Oк", style: .default)
@@ -184,7 +184,7 @@ extension EmployeeProfileViewController {
             return
         }
         
-        userService.updateUserPassword(token: token, oldPassword: oldPass, newPassword: newPass) { (passData) in
+        userService.updateUserPassword(oldPassword: oldPass, newPassword: newPass) { (passData) in
             if let _ = passData?.status {
                 self.accountService.saveUserInfo(email: self.userData.email, password: newPass)
                 let alert = UIAlertController(title: "Успешно", message: "Пароль изменен", preferredStyle: .alert)

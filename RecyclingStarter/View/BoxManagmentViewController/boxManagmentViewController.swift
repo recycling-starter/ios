@@ -407,7 +407,7 @@ class BoxManagmentViewController: UIViewController {
     
     // MARK: Network
     private func getCurrentBoxState() {
-        boxInteractionServise.getBox(box: boxData, token: token) { (newBox) in
+        boxInteractionServise.getBox(box: boxData) { (newBox) in
             if let newBox = newBox {
                 self.boxData = newBox
                 if let state = boxStates(rawValue: newBox.fullness) {
@@ -418,7 +418,7 @@ class BoxManagmentViewController: UIViewController {
     }
     
     private func fillBox(fullness: Int) {
-        boxInteractionServise.fillBox(token: token, box: boxData, isAdmin: isAdmin, fullness: fullness) { (newBox) in
+        boxInteractionServise.fillBox(box: boxData, isAdmin: isAdmin, fullness: fullness) { (newBox) in
             if let newBox = newBox {
                 self.boxData = newBox
             }

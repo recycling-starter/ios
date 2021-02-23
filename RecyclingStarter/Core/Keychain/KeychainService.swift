@@ -11,7 +11,7 @@ import KeychainAccess
 
 class KeychainService {
     
-    let keychain = Keychain(service: "borisov.Matvey.RecyclingStarter")
+    private let keychain = Keychain(service: "borisov.Matvey.RecyclingStarter")
     
     var token: String? {
         get {
