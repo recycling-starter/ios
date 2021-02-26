@@ -14,7 +14,7 @@ class NetworkService {
         
         let httpHeaders: HTTPHeaders = HTTPHeaders(headers)
         
-        AF.request(url, method: httpMethod, parameters: params, encoding: URLEncoding.default, headers: httpHeaders).responseData { (respose) in
+        AF.request(url, method: httpMethod, parameters: params, encoding: URLEncoding.default, headers: httpHeaders, requestModifier: { $0.timeoutInterval = 5 }).responseData { (respose) in
             switch respose.result {
             case .success(let  value):
                 completion(value, respose.response?.statusCode)
@@ -30,7 +30,7 @@ class NetworkService {
         
         let httpHeaders: HTTPHeaders = HTTPHeaders(headers)
         
-        AF.request(url, method: .get, encoding: URLEncoding.default, headers: httpHeaders).responseData { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: httpHeaders, requestModifier: { $0.timeoutInterval = 5 }).responseData { (response) in
             switch response.result {
             case .success(let value):
                 completionHandler(value)

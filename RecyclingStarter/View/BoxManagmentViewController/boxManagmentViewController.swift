@@ -13,9 +13,7 @@ import SwiftRichString
 class BoxManagmentViewController: UIViewController {
     
     private let boxInteractionServise = BoxInteractionServices()
-    private let localStorageService = LocalStorageServices()
     
-    let token: String
     let isAdmin: Bool
     var boxData: BoxData
     private var boxFilling = boxStates.state0
@@ -85,8 +83,7 @@ class BoxManagmentViewController: UIViewController {
         case top
     }
     
-    init(token: String, boxData: BoxData, isAdmin: Bool) {
-        self.token = token
+    init(boxData: BoxData, isAdmin: Bool) {
         self.boxData = boxData
         self.isAdmin = isAdmin
         self.infoView = Self.makeInfoView()

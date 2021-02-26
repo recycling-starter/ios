@@ -11,8 +11,6 @@ import UIKit
 
 class Router {
     
-    private let localStorageService = LocalStorageServices()
-    
     private let authService = UserServices()
     
     func firstViewController() -> UIViewController{
@@ -20,18 +18,12 @@ class Router {
         
         var vc: UIViewController = AuthViewController()
         
-        localStorageService.loadUserData { (loadInfo) in
-            if let email = loadInfo?.email, let password = loadInfo?.password{
-                self.authService.autharisation(email: email, password: password) { (userData, token) in
-                    if let userData = userData{
-                        vc = EmployeeTabBarController(token: token, userData: userData)
-                    }
-                    UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .easeOut))
-                }
-            } else {
-                DispatchQueue.main.async {
-                    UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .easeOut))
-                }
+        authService.getUserData { (userData) in
+            if let userData = userData {
+                vc = EmployeeTabBarController(userData: userData)
+            }
+            DispatchQueue.main.async {
+                UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .easeOut))
             }
         }
         return loadVC
@@ -50,7 +42,7 @@ class Router {
     }
     
     func presentEmployeeScreens(token: String, userData: UserData) {
-        let vc = EmployeeTabBarController(token: token, userData: userData)
+        let vc = EmployeeTabBarController(userData: userData)
         
         UIApplication.shared.keyWindow?.setRootViewController(vc, options: UIWindow.TransitionOptions(direction: .fade, style: .linear))
     }

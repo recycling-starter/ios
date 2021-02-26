@@ -29,7 +29,6 @@ class EmployeeProfileViewController: UIViewController {
     
     let userService = UserServices()
     let router = Router()
-    let token: String
     
     private enum Style {
         static let buttonStyle: SwiftRichString.Style = .init {
@@ -46,9 +45,8 @@ class EmployeeProfileViewController: UIViewController {
         registerForKeyboardNotification()
     }
     
-    init(userData: UserData, token: String) {
+    init(userData: UserData) {
         self.userData = userData
-        self.token = token
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -136,6 +134,7 @@ extension EmployeeProfileViewController {
     }
     
     @objc private func logout() {
+        logoutButton.isEnabled = false
         userService.logoutUser()
         router.presentAuthVC()
     }

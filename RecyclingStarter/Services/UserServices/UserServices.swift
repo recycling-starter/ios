@@ -31,7 +31,8 @@ class UserServices {
             do {
                 let userToken = try decoder.decode(UserToken.self, from: data)
                 self.keychainService.token = userToken.token
-                self.getUserData(id: userToken.id) { (userData) in
+                self.keychainService.id = userToken.id
+                self.getUserData() { (userData) in
                     complitionHandler(userData, userToken.token)
                 }
                 return
@@ -41,8 +42,9 @@ class UserServices {
         }
     }
     
-    private func getUserData(id: Int, complition: @escaping(UserData?) -> Void) {
-        guard let token = keychainService.token else {
+    func getUserData(complition: @escaping(UserData?) -> Void) {
+        guard let token = keychainService.token,
+              let id = keychainService.id else {
             complition(nil)
             return
         }

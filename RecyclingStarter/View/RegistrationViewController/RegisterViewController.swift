@@ -147,7 +147,6 @@ class RegisterViewController: UIViewController {
     @objc private func registration() {
         regButton.isEnabled = false
         let info = regRowsView.regInfo
-        print(info)
         if !registrationService.isVerifidePass(pass: info.pass,
                                               confirmPass: info.confirmPass) {
             let alert = UIAlertController(title: "Ошибка", message: "Пароли должны совпадать", preferredStyle: .alert)

@@ -14,12 +14,10 @@ class BoxListViewController: UIViewController {
     var boxList: [BoxData]
     var userData: UserData
     let router = Router()
-    let token: String
     
     let tableView = UITableView()
     
-    init(token: String, userData: UserData) {
-        self.token = token
+    init(userData: UserData) {
         self.boxList = userData.boxes ?? []
         self.userData = userData
         super.init(nibName: nil, bundle: nil)
@@ -71,9 +69,7 @@ extension BoxListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let box = boxList[indexPath.section]
-        print(indexPath.section)
-        print(box)
-        self.navigationController?.pushViewController(BoxManagmentViewController(token: token, boxData: box, isAdmin: userData.isAdmin), animated: true)
+        self.navigationController?.pushViewController(BoxManagmentViewController(boxData: box, isAdmin: userData.isAdmin), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

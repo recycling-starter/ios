@@ -26,7 +26,6 @@
 		BAB8F1B624D21B2E00F6E5B7 /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */; };
 		BAB8F1BA24D3607500F6E5B7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1B924D3607500F6E5B7 /* Router.swift */; };
 		BAB8F1CC24D3638E00F6E5B7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1CB24D3638E00F6E5B7 /* CoreDataManager.swift */; };
-		BAB8F1D124D36B8200F6E5B7 /* LocalStorageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1D024D36B8200F6E5B7 /* LocalStorageServices.swift */; };
 		BAB8F1D324D370FF00F6E5B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1D224D370FF00F6E5B7 /* User.swift */; };
 		BAB8F1D624D37BC000F6E5B7 /* UserInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1D424D37BC000F6E5B7 /* UserInfo+CoreDataClass.swift */; };
 		BAB8F1D724D37BC000F6E5B7 /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB8F1D524D37BC000F6E5B7 /* UserInfo+CoreDataProperties.swift */; };
@@ -76,7 +75,6 @@
 		BAB8F1B524D21B2E00F6E5B7 /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		BAB8F1B924D3607500F6E5B7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BAB8F1CB24D3638E00F6E5B7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		BAB8F1D024D36B8200F6E5B7 /* LocalStorageServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServices.swift; sourceTree = "<group>"; };
 		BAB8F1D224D370FF00F6E5B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BAB8F1D424D37BC000F6E5B7 /* UserInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BAB8F1D524D37BC000F6E5B7 /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -194,14 +192,6 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */ = {
-			isa = PBXGroup;
-			children = (
-				BAB8F1D024D36B8200F6E5B7 /* LocalStorageServices.swift */,
-			);
-			path = LocalStorageServices;
-			sourceTree = "<group>";
-		};
 		BAC05C1824CCB40900EBB2AE = {
 			isa = PBXGroup;
 			children = (
@@ -282,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				BADB018B24E6C5CB004AC43E /* BoxInteractionServices */,
-				BAB8F1CF24D36B5D00F6E5B7 /* LocalStorageServices */,
 				BAC05C6524CCE35B00EBB2AE /* UserServices */,
 			);
 			path = Services;
@@ -505,7 +494,6 @@
 				BAC05C5D24CCBA6F00EBB2AE /* RegisterViewController.swift in Sources */,
 				BADB018924E36D54004AC43E /* UILabelExtension.swift in Sources */,
 				BAC05C2524CCB40900EBB2AE /* AppDelegate.swift in Sources */,
-				BAB8F1D124D36B8200F6E5B7 /* LocalStorageServices.swift in Sources */,
 				BAC05C5224CCB9B800EBB2AE /* AppFont.swift in Sources */,
 				BADB019124E6C646004AC43E /* BoxInteractionServices.swift in Sources */,
 				BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */,
@@ -687,7 +675,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -709,7 +697,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

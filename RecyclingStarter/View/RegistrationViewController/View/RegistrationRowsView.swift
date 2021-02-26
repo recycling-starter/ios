@@ -140,7 +140,6 @@ class RegistrationRowsView: UIView {
         if let address = pickerDelegate?.pickerView?(picker, titleForRow: picker.selectedRow(inComponent: 0), forComponent: 0) {
             addressField.text = address
         }
-        print(picker.selectedRow(inComponent: 0))
         guard let vc = textFieldDelegate as? UIViewController else { return }
         vc.view.endEditing(true)
     }

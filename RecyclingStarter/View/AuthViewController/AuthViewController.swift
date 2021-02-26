@@ -103,6 +103,8 @@ class AuthViewController: UIViewController {
         contentContainer.addSubview(passwordField)
         contentContainer.addSubview(fogotPassButton)
         
+        passwordField.height(to: emailField)
+        
         mainContainer.addSubview(contentContainer)
         contentContainer.centerInSuperview()
         contentContainer.widthToSuperview()
