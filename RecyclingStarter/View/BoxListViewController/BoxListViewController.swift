@@ -11,9 +11,11 @@ import TinyConstraints
 
 class BoxListViewController: UIViewController {
     
-    var boxList: [BoxData]
-    var userData: UserData
-    let router = Router()
+    private var boxList: [BoxData]
+    private var userData: UserData
+    private let router = Router()
+    private let userService = UserServices()
+    private var refreshControl = UIRefreshControl()
     
     let tableView = UITableView()
     
@@ -40,6 +42,17 @@ class BoxListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = AppColor.background
         view.backgroundColor = AppColor.background
+        
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.backgroundView = refreshControl
+    }
+}
+
+extension BoxListViewController {
+    @objc func refresh(_ sender: AnyObject) {
+        reloadList {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
@@ -59,18 +72,17 @@ extension BoxListViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? BoxCell else { return }
-        if !cell.beingAnimated {
-            cell.startProgressAnimation()
-            cell.beingAnimated = true
-        }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let box = boxList[indexPath.section]
-        self.navigationController?.pushViewController(BoxManagmentViewController(boxData: box, isAdmin: userData.isAdmin), animated: true)
+        let boxVC = configureBoxVC(boxData: box, isAdmin: userData.isAdmin)
+        self.navigationController?.pushViewController(boxVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func configureBoxVC(boxData: BoxData, isAdmin: Bool) -> BoxManagmentViewController {
+        let vc = BoxManagmentViewController(boxData: boxData, isAdmin: isAdmin)
+        vc.delegate = self
+        return vc
     }
 }
 
@@ -83,5 +95,22 @@ extension BoxListViewController: UITableViewDelegate {
         let headerView = UIView()
         headerView.backgroundColor = .clear
         return headerView
+    }
+}
+
+extension BoxListViewController: BoxManagmentDelegate {
+    func didClose() {
+        reloadList()
+    }
+    
+    private func reloadList(complition: @escaping () -> Void = {}) {
+        userService.getUserData { (userData) in
+            guard let userData = userData else { return }
+            if self.boxList != userData.boxes {
+                self.boxList = userData.boxes ?? []
+                self.tableView.reloadData()
+            }
+            complition()
+        }
     }
 }

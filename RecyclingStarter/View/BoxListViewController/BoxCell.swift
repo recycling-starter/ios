@@ -70,11 +70,13 @@ class BoxCell: UITableViewCell {
         self.clipsToBounds = true
     }
     
+    
     func configute(with boxData: BoxData) {
         fullnes = boxData.fullness
         idLabel.attributedText = "Контейнер \(boxData.id)".set(style: Style.textStyle)
         fullnessLabel.attributedText = "\(fullnes)%".set(style: Style.percentStyle)
         roomLabel.attributedText = "Кабинет \(boxData.room)".set(style: Style.textStyle)
+        startProgressAnimation()
     }
     
     func startProgressAnimation() {
