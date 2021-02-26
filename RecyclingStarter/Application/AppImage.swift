@@ -16,7 +16,7 @@ enum AppImage {
     
     static let minusImage = UIImage(named: "minus")
     
-    static let logoutImage = UIImage(named: "logout")
+    static let returnImage = UIImage(named: "logout")
     
     static let emailIconImage = UIImage(named: "email_icon")
     

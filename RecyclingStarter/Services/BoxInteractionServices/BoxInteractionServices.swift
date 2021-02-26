@@ -26,7 +26,10 @@ class BoxInteractionServices {
         ]
         
         networkService.GETRequest(url: url, headers: headers) { (data) in
-            guard let data = data else { return }
+            guard let data = data else {
+                complition(nil)
+                return
+            }
             let decoder = JSONDecoder()
             do {
                 let box = try decoder.decode(BoxData.self, from: data)

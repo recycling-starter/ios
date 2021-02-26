@@ -149,6 +149,7 @@ class AuthViewController: UIViewController {
     func setupActions() {
         enterButton.addTarget(self, action: #selector(authRequest), for: .touchUpInside)
         singInButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
+        fogotPassButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
     }
 
 }
@@ -175,7 +176,12 @@ extension AuthViewController {
     
     @objc private func goToRegistration() {
         let vc = RegisterViewController()
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
+    }
+    
+    @objc private func resetPassword() {
+        let vc = ResetPasswordViewController()
+        self.present(vc, animated: true)
     }
 }
 

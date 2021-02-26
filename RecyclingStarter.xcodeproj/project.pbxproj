@@ -20,6 +20,7 @@
 		BA5EF2812565CFFB00A11656 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2802565CFFB00A11656 /* LoginTextField.swift */; };
 		BA5EF2842565D02000A11656 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5EF2832565D02000A11656 /* PasswordTextField.swift */; };
 		BA5EF2872565D31E00A11656 /* UserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */; };
+		BA6C2A3F25E991FD00951D9B /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6C2A3E25E991FD00951D9B /* ResetPasswordViewController.swift */; };
 		BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */; };
 		BA838F3425A94057004E9428 /* EmployeeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA838F3325A94057004E9428 /* EmployeeProfileViewController.swift */; };
 		BA91D717259D5EC100768830 /* AppHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91D716259D5EC100768830 /* AppHost.swift */; };
@@ -69,6 +70,7 @@
 		BA5EF2802565CFFB00A11656 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		BA5EF2832565D02000A11656 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		BA6BED212561F79600EA9B65 /* UserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextField.swift; sourceTree = "<group>"; };
+		BA6C2A3E25E991FD00951D9B /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		BA838F2E25A93F88004E9428 /* EmployeeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTabBarController.swift; sourceTree = "<group>"; };
 		BA838F3325A94057004E9428 /* EmployeeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileViewController.swift; sourceTree = "<group>"; };
 		BA91D716259D5EC100768830 /* AppHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHost.swift; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BA6C2A3D25E991D200951D9B /* ResetPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BA6C2A3E25E991FD00951D9B /* ResetPasswordViewController.swift */,
+			);
+			path = ResetPasswordViewController;
+			sourceTree = "<group>";
+		};
 		BA838F2D25A93F5F004E9428 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +261,7 @@
 				BA01B35425A14EC8007AF9AF /* BoxListViewController */,
 				BAC05C5924CCBA2D00EBB2AE /* Extensions */,
 				BAC05C6B24CE2C3A00EBB2AE /* BoxManagmentViewController */,
+				BA6C2A3D25E991D200951D9B /* ResetPasswordViewController */,
 				BAC05C4E24CCB94900EBB2AE /* AuthViewController */,
 				BAC05C4D24CCB93600EBB2AE /* RegistrationViewController */,
 				BAB8F1D824D38A1B00F6E5B7 /* LoadScreenViewController.swift */,
@@ -499,6 +510,7 @@
 				BA838F2F25A93F88004E9428 /* EmployeeTabBarController.swift in Sources */,
 				BAF2B9FC25C8CDC50009200A /* UIImageExtension.swift in Sources */,
 				BAC05C6D24CE2C5400EBB2AE /* boxManagmentViewController.swift in Sources */,
+				BA6C2A3F25E991FD00951D9B /* ResetPasswordViewController.swift in Sources */,
 				BA11C42125E30C9900A53804 /* RegistrationService.swift in Sources */,
 				BAC05C2F24CCB40900EBB2AE /* RecyclingStarter.xcdatamodeld in Sources */,
 				BA01B35625A14EE2007AF9AF /* BoxListViewController.swift in Sources */,

@@ -20,9 +20,9 @@ class NetworkService {
                 completion(value, respose.response?.statusCode)
                 return
             case .failure:
-                break
+                completion(nil, nil)
+                return
             }
-            completion(nil, nil)
         }
     }
     
@@ -36,9 +36,9 @@ class NetworkService {
                 completionHandler(value)
                 return
             case .failure:
-                break
+                completionHandler(nil)
+                return
             }
-            completionHandler(nil)
         }
     }
 }

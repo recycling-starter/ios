@@ -71,7 +71,9 @@ class RegistrationService {
         let headers: [String: String] = [:]
         
         networkService.GETRequest(url: url, headers: headers) { (data) in
-            guard let data = data else { return }
+            guard let data = data else {
+                complition([])
+                return }
             let decoder = JSONDecoder()
             let buildingsArray = try? decoder.decode([Building].self, from: data)
             buildings = buildingsArray?.map { build in

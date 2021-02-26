@@ -106,7 +106,7 @@ class RegisterViewController: UIViewController {
     
     private static func createCloseButton() -> UIButton {
         let button = UIButton()
-        let image = AppImage.logoutImage?.withRenderingMode(.alwaysTemplate)
+        let image = AppImage.returnImage?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = AppColor.label
         button.imageView?.transform = CGAffineTransform(rotationAngle: .pi)
