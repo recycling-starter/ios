@@ -11,7 +11,11 @@ import TinyConstraints
 
 class BoxListViewController: UIViewController {
     
-    private var boxList: [BoxData]
+    private var boxList: [BoxData] {
+        didSet {
+            boxList.reverse()
+        }
+    }
     private var userData: UserData
     private let router = Router()
     private let userService = UserServices()
@@ -20,7 +24,9 @@ class BoxListViewController: UIViewController {
     let tableView = UITableView()
     
     init(userData: UserData) {
-        self.boxList = userData.boxes ?? []
+        var list = userData.boxes
+        list?.reverse()
+        self.boxList = list ?? []
         self.userData = userData
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,6 +45,8 @@ class BoxListViewController: UIViewController {
     private func setupSubViews() {
         self.view.addSubview(tableView)
         tableView.edgesToSuperview(insets: .left(24) + .right(24), usingSafeArea: true)
+        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -24)
+        tableView.clipsToBounds = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = AppColor.background
         view.backgroundColor = AppColor.background
