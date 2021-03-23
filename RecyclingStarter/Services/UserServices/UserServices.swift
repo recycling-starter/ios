@@ -11,12 +11,13 @@ import Foundation
 class UserServices {
     
     let networkService = NetworkService()
+    let keychainService = KeychainService()
     
     func autharisation(email: String, password: String, complitionHandler: @escaping(UserData?, String) -> Void) {
         
         let params: [String: Any] = [
-            "email" : email.trimmingCharacters(in: .whitespacesAndNewlines),
-            "password" : password.trimmingCharacters(in: .whitespacesAndNewlines)
+            "email" : email,
+            "password" : password
         ]
         
         let authPath = "/v1/users/auth/"
@@ -24,36 +25,54 @@ class UserServices {
         
         let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded"]
         
-        networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .post) { (data) in
-            guard let data = data else { return }
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .post) { (data, _) in
+            guard let data = data else {
+                complitionHandler(nil, "")
+                return
+            }
             let decoder = JSONDecoder()
             do {
                 let userToken = try decoder.decode(UserToken.self, from: data)
-                self.getUserData(userToken: userToken) { (userData) in
+                self.keychainService.token = userToken.token
+                self.keychainService.id = userToken.id
+                self.getUserData() { (userData) in
                     complitionHandler(userData, userToken.token)
                 }
                 return
-            } catch { }
-            
-            complitionHandler(nil, "")
+            } catch {
+                complitionHandler(nil, "")
+            }
         }
     }
     
-    private func getUserData(userToken: UserToken, complitionHandler: @escaping(UserData?) -> Void) {
-        let path = "/v1/users/\(userToken.id)"
+    func getUserData(complition: @escaping(UserData?) -> Void) {
+        guard let token = keychainService.token,
+              let id = keychainService.id else {
+            complition(nil)
+            return
+        }
+        let path = "/v1/users/\(id)"
         let url = AppHost.hostURL + path
         
-        let headers: [String: String] = ["Authorization": "Bearer \(userToken.token)"]
+        let headers: [String: String] = ["Authorization": "Bearer \(token)"]
         
         networkService.GETRequest(url: url, headers: headers) { (data) in
-            guard let data = data else { return }
+            guard let data = data else {
+                complition(nil)
+                return
+            }
             let decoder = JSONDecoder()
             let userData = try? decoder.decode(UserData.self, from: data)
-            complitionHandler(userData)
+            complition(userData)
         }
     }
     
-    func updateUserData(token: String, firstName: String? = nil, phone: String? = nil, room: String? = nil, complition: @escaping(UserData?) -> Void) {
+    func updateUserData(firstName: String? = nil, phone: String? = nil, room: String? = nil, complition: @escaping(UserData?) -> Void) {
+        guard let token = keychainService.token else {
+            complition(nil)
+            return
+        }
+        
         let path = "/v1/users/"
         let url = AppHost.hostURL + path
         
@@ -65,36 +84,64 @@ class UserServices {
         if firstName == nil && phone == nil && room == nil {
             complition(nil)
         } else if let phone = phone {
-            params["phone"] = phone.trimmingCharacters(in: .whitespacesAndNewlines)
+            params["phone"] = phone
         } else if let firstName = firstName {
-            params["first_name"] = firstName.trimmingCharacters(in: .whitespacesAndNewlines)
+            params["first_name"] = firstName
         } else if let room = room {
-            params["room"] = room.trimmingCharacters(in: .whitespacesAndNewlines)
+            params["room"] = room
         }
         
-        networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .put) { (data) in
-            guard let data = data else { return }
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .put) { (data, _) in
+            guard let data = data else {
+                complition(nil)
+                return
+            }
             let decoder = JSONDecoder()
             let userData = try? decoder.decode(UserData.self, from: data)
             complition(userData)
         }
     }
     
-    func updateUserPassword(token: String, oldPassword: String, newPassword: String, complition: @escaping(UpdateUserPasswordData?) -> Void) {
+    func updateUserPassword(oldPassword: String, newPassword: String, complition: @escaping(UpdateUserPasswordData?) -> Void) {
+        guard let token = keychainService.token else {
+            complition(nil)
+            return
+        }
+        
         let path = "/v1/users/"
         let url = AppHost.hostURL + path
         
         let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded",
                                          "Authorization": "Bearer \(token)"]
         
-        let params: [String: Any] = ["old_password": oldPassword.trimmingCharacters(in: .whitespacesAndNewlines),
-                                     "new_password": newPassword.trimmingCharacters(in: .whitespacesAndNewlines)]
+        let params: [String: Any] = ["old_password": oldPassword,
+                                     "new_password": newPassword]
         
-        networkService.POSTRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (data) in
-            guard let data = data else { return }
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .patch) { (data, _) in
+            guard let data = data else {
+                complition(nil)
+                return
+            }
             let decoder = JSONDecoder()
             let userPasswordData = try? decoder.decode(UpdateUserPasswordData.self, from: data)
             complition(userPasswordData)
         }
+    }
+    
+    func resetPassword(email: String, complition: @escaping(Bool) -> Void) {
+        let path = "/v1/users/reset_password"
+        let url = AppHost.hostURL + path
+        
+        let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded"]
+        
+        let params: [String: Any] = ["email": email]
+        
+        networkService.paramsRequest(url: url, params: params, headers: headers, httpMethod: .post) { (data, code) in
+            complition(true)
+        }
+    }
+    
+    func logoutUser() {
+        keychainService.clearKeychain()
     }
 }

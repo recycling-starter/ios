@@ -17,8 +17,7 @@ class BoxCell: UITableViewCell {
     private let fullnessLabel = UILabel()
     private let roomLabel = UILabel()
     private var fullnes = 0
-    
-    var beingAnimated = false
+    private var isAnimated = false
     
     private enum Style {
         static let percentStyle: SwiftRichString.Style = .init {
@@ -70,14 +69,17 @@ class BoxCell: UITableViewCell {
         self.clipsToBounds = true
     }
     
+    
     func configute(with boxData: BoxData) {
         fullnes = boxData.fullness
         idLabel.attributedText = "Контейнер \(boxData.id)".set(style: Style.textStyle)
         fullnessLabel.attributedText = "\(fullnes)%".set(style: Style.percentStyle)
         roomLabel.attributedText = "Кабинет \(boxData.room)".set(style: Style.textStyle)
-    }
-    
-    func startProgressAnimation() {
-        progressBar.progressAnimation(duration: 0.5, progress: fullnes)
+        if !isAnimated {
+            isAnimated = true
+            progressBar.progressAnimation(duration: 0.5, progress: fullnes)
+        } else {
+            progressBar.drawFill(progress: fullnes)
+        }
     }
 }

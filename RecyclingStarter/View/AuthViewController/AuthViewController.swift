@@ -23,7 +23,6 @@ class AuthViewController: UIViewController {
     private let logoView: UIImageView
     
     private let authService = UserServices()
-    private let localStorageService = LocalStorageServices()
     private let router = Router()
     
     
@@ -104,8 +103,10 @@ class AuthViewController: UIViewController {
         contentContainer.addSubview(passwordField)
         contentContainer.addSubview(fogotPassButton)
         
+        passwordField.height(to: emailField)
+        
         mainContainer.addSubview(contentContainer)
-        contentContainer.centerYToSuperview()
+        contentContainer.centerInSuperview()
         contentContainer.widthToSuperview()
         
         enterLabel.topToSuperview()
@@ -148,6 +149,7 @@ class AuthViewController: UIViewController {
     func setupActions() {
         enterButton.addTarget(self, action: #selector(authRequest), for: .touchUpInside)
         singInButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
+        fogotPassButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
     }
 
 }
@@ -164,7 +166,6 @@ extension AuthViewController {
         authService.autharisation(email: email, password: password) { (userData, token) in
             if let userData = userData{
                 self.router.presentEmployeeScreens(token: token, userData: userData)
-                self.localStorageService.saveUserInfo(email: email, password: password)
             } else {
                 self.emailField.errorSignalize()
                 self.passwordField.errorSignalize()
@@ -175,7 +176,12 @@ extension AuthViewController {
     
     @objc private func goToRegistration() {
         let vc = RegisterViewController()
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
+    }
+    
+    @objc private func resetPassword() {
+        let vc = ResetPasswordViewController()
+        self.present(vc, animated: true)
     }
 }
 

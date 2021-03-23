@@ -10,19 +10,19 @@ import Foundation
 import Alamofire
 
 class NetworkService {
-    func POSTRequest(url: String, params: [String: Any], headers: [String: String], httpMethod: HTTPMethod, completionHandler: @escaping(Data?) -> Void) {
+    func paramsRequest(url: String, params: [String: Any], headers: [String: String], httpMethod: HTTPMethod, completion: @escaping(Data?, Int?) -> Void) {
         
         let httpHeaders: HTTPHeaders = HTTPHeaders(headers)
         
-        AF.request(url, method: httpMethod, parameters: params, encoding: URLEncoding.default, headers: httpHeaders).responseData { (respose) in
+        AF.request(url, method: httpMethod, parameters: params, encoding: URLEncoding.default, headers: httpHeaders, requestModifier: { $0.timeoutInterval = 5 }).responseData { (respose) in
             switch respose.result {
             case .success(let  value):
-                completionHandler(value)
+                completion(value, respose.response?.statusCode)
                 return
             case .failure:
-                break
+                completion(nil, nil)
+                return
             }
-            completionHandler(nil)
         }
     }
     
@@ -30,15 +30,15 @@ class NetworkService {
         
         let httpHeaders: HTTPHeaders = HTTPHeaders(headers)
         
-        AF.request(url, method: .get, encoding: URLEncoding.default, headers: httpHeaders).responseData { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: httpHeaders, requestModifier: { $0.timeoutInterval = 5 }).responseData { (response) in
             switch response.result {
             case .success(let value):
                 completionHandler(value)
                 return
             case .failure:
-                break
+                completionHandler(nil)
+                return
             }
-            completionHandler(nil)
         }
     }
 }

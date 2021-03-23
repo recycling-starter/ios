@@ -10,9 +10,7 @@ import UIKit
 
 class EmployeeTabBarController: UITabBarController {
     
-    var token: String
     var userData: UserData
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +21,7 @@ class EmployeeTabBarController: UITabBarController {
         tabBar.barTintColor = AppColor.navigationBarColor
     }
     
-    init(token: String, userData: UserData) {
-        self.token = token
+    init(userData: UserData) {
         self.userData = userData
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,7 +31,7 @@ class EmployeeTabBarController: UITabBarController {
     }
     
     private func setupBoxList() -> UINavigationController {
-        let boxListVC = BoxListViewController(token: token, userData: userData)
+        let boxListVC = BoxListViewController(userData: userData)
         boxListVC.title = "Контейнеры"
         let navigation = UINavigationController(rootViewController: boxListVC)
         
@@ -53,7 +50,7 @@ class EmployeeTabBarController: UITabBarController {
     }
     
     private func setupProfile() -> UINavigationController {
-        let profileVC = EmployeeProfileViewController(userData: userData, token: token)
+        let profileVC = EmployeeProfileViewController(userData: userData)
         let navigation = UINavigationController(rootViewController: profileVC)
         profileVC.title = "Настройки"
         navigation.navigationBar.prefersLargeTitles = true

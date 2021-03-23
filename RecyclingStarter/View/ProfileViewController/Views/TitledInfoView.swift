@@ -51,7 +51,5 @@ class TitledInfoView: UIView {
         textField.leadingToSuperview()
         textField.trailingToSuperview()
         textField.bottomToSuperview()
-        
-        self.height(50)
     }
 }

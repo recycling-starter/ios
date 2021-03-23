@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BoxData: Codable {
+struct BoxData: Equatable, Codable {
     var id: Int
     var fullness: Int
     var room: String

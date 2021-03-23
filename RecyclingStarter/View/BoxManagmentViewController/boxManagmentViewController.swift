@@ -10,17 +10,22 @@ import UIKit
 import TinyConstraints
 import SwiftRichString
 
+protocol BoxManagmentDelegate {
+    func didClose()
+}
+
 class BoxManagmentViewController: UIViewController {
     
     private let boxInteractionServise = BoxInteractionServices()
-    private let localStorageService = LocalStorageServices()
     
-    let token: String
     let isAdmin: Bool
     var boxData: BoxData
     private var boxFilling = boxStates.state0
     private var fillingTopConstraint: Constraint?
     private var boxFillingShift: CGFloat = 0
+    private var isBoxEdit = false
+    
+    var delegate: BoxManagmentDelegate?
     
     private let infoView: UIView
     private let minusButton: UIButton
@@ -85,8 +90,7 @@ class BoxManagmentViewController: UIViewController {
         case top
     }
     
-    init(token: String, boxData: BoxData, isAdmin: Bool) {
-        self.token = token
+    init(boxData: BoxData, isAdmin: Bool) {
         self.boxData = boxData
         self.isAdmin = isAdmin
         self.infoView = Self.makeInfoView()
@@ -117,6 +121,13 @@ class BoxManagmentViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         boxFillingShift = 0.028 * boxMiddleImageView.bounds.height
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        if isBoxEdit {
+            delegate?.didClose()
+        }
     }
     
     // MARK: Setup View
@@ -290,14 +301,26 @@ class BoxManagmentViewController: UIViewController {
     // MARK: Setup Actions
     func setupButtonActions() {
         if isAdmin {
-            minusButton.addTarget(self, action: #selector(decreaseBoxFilling), for: .touchUpInside)
+            minusButton.addTarget(self, action: #selector(decreaseAction), for: .touchUpInside)
         } else {
             minusButton.isEnabled = false
         }
-        plusButton.addTarget(self, action: #selector(increaseBoxFilling), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(increaseAction), for: .touchUpInside)
     }
     
-    @objc func increaseBoxFilling() {
+    @objc
+    private func increaseAction() {
+        increaseBoxFilling()
+        fillBox(fullness: boxFilling.rawValue)
+    }
+    
+    @objc
+    private func decreaseAction() {
+        decreaseBoxFilling()
+        fillBox(fullness: boxFilling.rawValue)
+    }
+    
+    private func increaseBoxFilling() {
         var animation = {}
         switch boxFilling {
         case .state0:
@@ -336,7 +359,6 @@ class BoxManagmentViewController: UIViewController {
         default:
             break
         }
-        fillBox(fullness: boxFilling.rawValue)
         percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
         progressView.setProgress(Float(boxFilling.rawValue) / 100, animated: true)
         UIView.animate(withDuration: 0.5) {
@@ -345,7 +367,7 @@ class BoxManagmentViewController: UIViewController {
         }
     }
     
-    @objc func decreaseBoxFilling() {
+    private func decreaseBoxFilling() {
         var animation = {}
         switch boxFilling {
         case .state100:
@@ -385,7 +407,6 @@ class BoxManagmentViewController: UIViewController {
         default:
             break
         }
-        fillBox(fullness: boxFilling.rawValue)
         progressView.setProgress(max(Float(boxFilling.rawValue) / 100, 0.01), animated: true)
         percentLabel.attributedText = "\(boxFilling.rawValue)%".set(style: Style.percentLabel)
         UIView.animate(withDuration: 0.5) {
@@ -407,7 +428,7 @@ class BoxManagmentViewController: UIViewController {
     
     // MARK: Network
     private func getCurrentBoxState() {
-        boxInteractionServise.getBox(box: boxData, token: token) { (newBox) in
+        boxInteractionServise.getBox(box: boxData) { (newBox) in
             if let newBox = newBox {
                 self.boxData = newBox
                 if let state = boxStates(rawValue: newBox.fullness) {
@@ -418,7 +439,8 @@ class BoxManagmentViewController: UIViewController {
     }
     
     private func fillBox(fullness: Int) {
-        boxInteractionServise.fillBox(token: token, box: boxData, isAdmin: isAdmin, fullness: fullness) { (newBox) in
+        isBoxEdit = true
+        boxInteractionServise.fillBox(box: boxData, isAdmin: isAdmin, fullness: fullness) { (newBox) in
             if let newBox = newBox {
                 self.boxData = newBox
             }

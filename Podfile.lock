@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.2.2)
+  - KeychainAccess (4.2.1)
   - SwiftRichString (3.7.2)
   - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - KeychainAccess
   - SwiftRichString
   - TinyConstraints
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - KeychainAccess
     - SwiftRichString
     - TinyConstraints
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
   SwiftRichString: d61b807db1f8834c26fee92b6dd3e1be2dc5af03
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: a9a95df93aac272b5f978aa73f677bc74a0b62bb
+PODFILE CHECKSUM: 31c4a6683962dcb00753eaf3338c294653b7bc69
 
 COCOAPODS: 1.9.2

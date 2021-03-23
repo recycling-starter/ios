@@ -27,10 +27,8 @@ class EmployeeProfileViewController: UIViewController {
     private lazy var logoutButton = Self.createLogoutButton(title: "Выйти")
     private var bottomScrollViewConstraint: Constraint? = nil
     
-    let accountService: AccountDataManagerProtocol = AccountDataManager()
     let userService = UserServices()
     let router = Router()
-    let token: String
     
     private enum Style {
         static let buttonStyle: SwiftRichString.Style = .init {
@@ -47,9 +45,8 @@ class EmployeeProfileViewController: UIViewController {
         registerForKeyboardNotification()
     }
     
-    init(userData: UserData, token: String) {
+    init(userData: UserData) {
         self.userData = userData
-        self.token = token
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -137,11 +134,9 @@ extension EmployeeProfileViewController {
     }
     
     @objc private func logout() {
-        accountService.logout {
-            DispatchQueue.main.async { [weak self] in
-                self?.router.presentAuthVC()
-            }
-        }
+        logoutButton.isEnabled = false
+        userService.logoutUser()
+        router.presentAuthVC()
     }
     
     @objc private func changeUserInfo() {
@@ -153,7 +148,7 @@ extension EmployeeProfileViewController {
         let name = nameInfoView.textField.text
         let photeString = phoneInfoView.textField.text
         let room = roomInfoView.textField.text
-        userService.updateUserData(token: token, firstName: name, phone: photeString, room: room) { (newUserData) in
+        userService.updateUserData(firstName: name, phone: photeString, room: room) { (newUserData) in
             if let newUserData = newUserData {
                 let alert = UIAlertController(title: "Успешно", message: "Данные изменены", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Oк", style: .default)
@@ -184,9 +179,8 @@ extension EmployeeProfileViewController {
             return
         }
         
-        userService.updateUserPassword(token: token, oldPassword: oldPass, newPassword: newPass) { (passData) in
+        userService.updateUserPassword(oldPassword: oldPass, newPassword: newPass) { (passData) in
             if let _ = passData?.status {
-                self.accountService.saveUserData(email: self.userData.email, password: newPass)
                 let alert = UIAlertController(title: "Успешно", message: "Пароль изменен", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Oк", style: .default)
                 alert.view.tintColor = AppColor.button

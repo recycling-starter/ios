@@ -55,6 +55,28 @@ class CircleProgressBarView: UIView {
 
     }
     
+    func drawFill(progress: Int) {
+        let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+
+        circularProgressAnimation.duration = 0
+        circularProgressAnimation.fromValue = max(0.01, min(Double(progress) / 100, 1.0))
+        circularProgressAnimation.toValue = max(0.01, min(Double(progress) / 100, 1.0))
+        circularProgressAnimation.fillMode = .forwards
+        circularProgressAnimation.isRemovedOnCompletion = false
+        
+        
+        let colorChangeAnimation = CABasicAnimation(keyPath: "strokeColor")
+        guard let lastColor = colorSet(progress: progress).last else { return }
+        colorChangeAnimation.fromValue = lastColor
+        colorChangeAnimation.toValue = lastColor
+        colorChangeAnimation.fillMode = .forwards
+        colorChangeAnimation.isRemovedOnCompletion = false
+        colorChangeAnimation.duration = 0
+        
+        progressLayer.add(colorChangeAnimation, forKey: "colorChangeAnimation")
+        progressLayer.add(circularProgressAnimation, forKey: "progressAnimation")
+    }
+    
     private func createAnimation(duration: TimeInterval, progress: Int, delay: TimeInterval) {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
 

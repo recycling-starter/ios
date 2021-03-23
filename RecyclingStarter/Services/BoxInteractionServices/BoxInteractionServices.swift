@@ -8,11 +8,16 @@
 
 import Foundation
 
-class BoxInteractionServices: BoxInteractionProtocol {
+class BoxInteractionServices {
     
     let networkService = NetworkService()
+    let keychainService = KeychainService()
     
-    func getBox(box: BoxData, token: String, complitionHandler: @escaping(BoxData?) -> Void) {
+    func getBox(box: BoxData, complition: @escaping(BoxData?) -> Void) {
+        guard let token = keychainService.token else {
+            complition(nil)
+            return
+        }
         let url = AppHost.hostURL + "/v1/boxes/\(box.id)"
         
         let headers: [String: String] = [
@@ -21,20 +26,26 @@ class BoxInteractionServices: BoxInteractionProtocol {
         ]
         
         networkService.GETRequest(url: url, headers: headers) { (data) in
-            guard let data = data else { return }
+            guard let data = data else {
+                complition(nil)
+                return
+            }
             let decoder = JSONDecoder()
             do {
                 let box = try decoder.decode(BoxData.self, from: data)
-                complitionHandler(box)
+                complition(box)
                 return
             } catch { }
             
-            complitionHandler(nil)
+            complition(nil)
         }
     }
     
-    func fillBox(token: String, box: BoxData, isAdmin: Bool, fullness: Int, complitionHandler: @escaping(BoxData?) -> Void) {
-        
+    func fillBox(box: BoxData, isAdmin: Bool, fullness: Int, complition: @escaping(BoxData?) -> Void) {
+        guard let token = keychainService.token else {
+            complition(nil)
+            return
+        }
         let url = AppHost.hostURL + "/v1/boxes/\(box.id)"
         
         let headers: [String: String] = [
@@ -47,12 +58,12 @@ class BoxInteractionServices: BoxInteractionProtocol {
             "room": box.room
         ]
         
-        networkService.POSTRequest(url: url,
+        networkService.paramsRequest(url: url,
                                    params: params,
                                    headers: headers,
-                                   httpMethod: isAdmin ? .put : .patch) { (stringData) in
-            self.getBox(box: box, token: token) { (box) in
-                complitionHandler(box)
+                                   httpMethod: isAdmin ? .put : .patch) { (stringData, _)  in
+            self.getBox(box: box) { (box) in
+                complition(box)
             }
         }
     }
